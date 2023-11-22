@@ -1,8 +1,9 @@
-import React, { useState } from "react"; 
+import React, { useState , useEffect} from "react"; 
 import validator from 'validator'
 
 
 export default function Register({ Mode }) {
+    // Validation.
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('') 
     const validatePassword = (value) => { 
         if (validator.isStrongPassword(value, { 
@@ -36,6 +37,22 @@ export default function Register({ Mode }) {
         }
     }
 
+    // Warn users if they try to leave a page with unsaved changes.
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+          const confirmationMessage = ''
+          e.returnValue = confirmationMessage;
+          return confirmationMessage;
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+  // Component.
     return (
         <div className="login-form-container">
         <form className="login-form">
