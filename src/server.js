@@ -7,21 +7,50 @@ export function makeServer({ environment = "test" } = {}) {
 
     models: {
       users: Model,
-    },
-
-    seeds(server) {
-      server.create("user", { name: "Bob" })
-      server.create("user", { name: "Alice" })
+      observation: Model,
     },
 
     routes() {
       this.namespace = "api"
 
-      this.get("/users", (schema) => {
-        return schema.users.all()
-      })
+       // Login
+       this.post('/login', (schema, request) => {
+        const { username, password } = JSON.parse(request.requestBody);
+        // Authentication logic here
+        // Return user data or error
+      });
+
+      // Register
+      this.post('/register', (schema, request) => {
+        const newUser = JSON.parse(request.requestBody);
+        // Registration logic here
+        // Return user data or error
+      });
+
+      // Add observation
+      this.post('/observations', (schema, request) => {
+        const observation = JSON.parse(request.requestBody);
+        // Add observation logic here
+        // Return observation data
+        return schema.observations.create(observation);
+      });
+
+      // View observation
+      this.get('/observations/:id', (schema, request) => {
+        let id = request.params.id;
+        // Fetch observation logic here
+        return schema.observations.find(id);
+      });
+
+      // Edit observation
+      this.put('/observations/:id', (schema, request) => {
+        let id = request.params.id;
+        const newObservation = JSON.parse(request.requestBody);
+        // Update observation logic here
+        return schema.observations.find(id).update(newObservation);
+      });
     },
   })
-  console.log()
+
   return server
 }
