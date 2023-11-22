@@ -3,8 +3,8 @@ import validator from 'validator'
 
 
 export default function Register({ Mode }) {
-    const [errorMessage, setErrorMessage] = useState('') 
-    const validate = (value) => { 
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState('') 
+    const validatePassword = (value) => { 
         if (validator.isStrongPassword(value, { 
             minLength: 8,
             minLowercase: 1,
@@ -12,11 +12,29 @@ export default function Register({ Mode }) {
             minNumbers: 1,
             minSymbols: 1 
         })) { 
-            setErrorMessage('Your Password is strong') 
+            setPasswordErrorMessage('') 
         } else { 
-            setErrorMessage('Your Password is not strong') 
+            setPasswordErrorMessage('Your Password is not strong') 
         } 
     } 
+
+    const [nameErrorMessage, setNameErrorMessage] = useState('') 
+    const validateNameIsNotNil = (name) => {
+        if (name.trim().length == 0) {
+            setNameErrorMessage('Name field must not be empty') 
+        } else {
+            setNameErrorMessage('') 
+        }
+    };
+
+    const [emailErrorMessage, setEmailErrorMessage] = useState('')
+    const validateEmail = (email) => {
+        if (!validator.isEmail(email)) {
+            setEmailErrorMessage("Please enter valid email")
+        } else {
+            setEmailErrorMessage('')
+        }
+    }
 
     return (
         <div className="login-form-container">
@@ -36,7 +54,10 @@ export default function Register({ Mode }) {
                     autoComplete="name"
                     className="form-control mt-1"
                     placeholder="Enter Full Name"
+                    onChange={(e) => validateNameIsNotNil(e.target.value)}
+                    required
                     />
+                     {nameErrorMessage && <div className="text-danger">{nameErrorMessage}</div>}
                 </div>
                 <div className="form-group mt-3">
                     <label>Email address</label>
@@ -45,7 +66,10 @@ export default function Register({ Mode }) {
                     autoComplete="username"
                     className="form-control mt-1"
                     placeholder="Email Address"
+                    onChange={(e) => validateEmail(e.target.value)}
+                    required
                     />
+                     {emailErrorMessage && <div className="text-danger">{emailErrorMessage}</div>}
                 </div>
                 <div className="form-group mt-3">
                     <label>Date of Birth</label>
@@ -53,6 +77,7 @@ export default function Register({ Mode }) {
                     type="date"
                     className="form-control mt-1"
                     placeholder="Enter Date of birth"
+                    required
                     />
                 </div>
                 <div className="form-group mt-3">
@@ -62,12 +87,13 @@ export default function Register({ Mode }) {
                     autoComplete="new-password"
                     className="form-control mt-1"
                     placeholder="Password"
-                    onChange={(e) => validate(e.target.value)}
+                    onChange={(e) => validatePassword(e.target.value)}
+                    required
                     />
                     <small className="form-text text-muted">
                         Password must be at least 8 characters and include uppercase, lowercase, a number, and a special character.
                     </small>
-                    {errorMessage && <div className="text-danger">{errorMessage}</div>}
+                    {passwordErrorMessage && <div className="text-danger">{passwordErrorMessage}</div>}
                 </div>
                 <div className="d-grid gap-2 mt-3">
                     <button type="submit" className="btn btn-success">
