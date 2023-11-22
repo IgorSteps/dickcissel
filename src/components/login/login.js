@@ -10,7 +10,7 @@ export default function Login({ Mode }) {
           <div className="text-center">
             Not registered yet?{" "}
             <span className="link-primary" onClick={Mode}>
-              Sign Up
+              Register
             </span>
           </div>
           <div className="form-group mt-3">
