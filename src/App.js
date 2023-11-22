@@ -2,13 +2,13 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Login from "./components/login/login"
+import Auth from "./components/auth/auth"
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </BrowserRouter>
   );

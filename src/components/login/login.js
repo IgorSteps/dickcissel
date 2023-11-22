@@ -1,13 +1,18 @@
 
 import React from "react"
 
-export default function (props) {
+export default function Login({ Mode }) {
   return (
     <div className="login-form-container">
       <form className="login-form">
         <div className="login-form-content">
           <h3 className="login-form-title">Login</h3>
-
+          <div className="text-center">
+            Not registered yet?{" "}
+            <span className="link-primary" onClick={Mode}>
+              Sign Up
+            </span>
+          </div>
           <div className="form-group mt-3">
             <label>Email address</label>
             <input
