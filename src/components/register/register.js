@@ -1,4 +1,23 @@
+import React, { useState } from "react"; 
+import validator from 'validator'
+
+
 export default function Register({ Mode }) {
+    const [errorMessage, setErrorMessage] = useState('') 
+    const validate = (value) => { 
+        if (validator.isStrongPassword(value, { 
+            minLength: 8,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbols: 1 
+        })) { 
+            setErrorMessage('Your Password is strong') 
+        } else { 
+            setErrorMessage('Your Password is not strong') 
+        } 
+    } 
+
     return (
         <div className="login-form-container">
         <form className="login-form">
@@ -7,7 +26,7 @@ export default function Register({ Mode }) {
                 <div className="text-center">
                     Already registered?{" "}
                     <span className="link-primary" onClick={Mode}>
-                    Sign In
+                    Login
                     </span>
                 </div>
                 <div className="form-group mt-3">
@@ -43,7 +62,12 @@ export default function Register({ Mode }) {
                     autoComplete="new-password"
                     className="form-control mt-1"
                     placeholder="Password"
+                    onChange={(e) => validate(e.target.value)}
                     />
+                    <small className="form-text text-muted">
+                        Password must be at least 8 characters and include uppercase, lowercase, a number, and a special character.
+                    </small>
+                    {errorMessage && <div className="text-danger">{errorMessage}</div>}
                 </div>
                 <div className="d-grid gap-2 mt-3">
                     <button type="submit" className="btn btn-success">
