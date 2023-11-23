@@ -7,7 +7,15 @@ function BasicExample() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">BirdWatch</Navbar.Brand>
+      <Navbar.Brand href="#home">
+            <img
+              src="bird-svgrepo-com.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
