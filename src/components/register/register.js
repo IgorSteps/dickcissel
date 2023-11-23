@@ -21,7 +21,7 @@ export default function Register({ Mode }) {
 
     const [nameErrorMessage, setNameErrorMessage] = useState('') 
     const validateNameIsNotNil = (name) => {
-        if (name.trim().length == 0) {
+        if (name.trim().length === 0) {
             setNameErrorMessage('Name field must not be empty') 
         } else {
             setNameErrorMessage('') 
