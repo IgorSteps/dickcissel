@@ -5,7 +5,8 @@ export default function Home(props) {
         <><BasicNavbar />
         <div className="home-page-container">
             <div className="home-page-content">
-                <h3 className="home-page-title">Home</h3>
+                <h3 className="home-page-title">Bird Of The Week</h3>
+                <h3 className="home-page-title">Dickcissel [duhk·si·sl]</h3>
                 <div className="home-page-image">
                     <img
                         src="dickcissel.jpeg"
@@ -16,7 +17,7 @@ export default function Home(props) {
                     />
                 </div>
                 <div className="home-page-about">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    The <b>dickcissel</b> (Spiza americana) is a small seed-eating migratory bird in the family Cardinalidae. It breeds on the prairie grasslands of the Midwestern United States and winters in Central America, northern Colombia, and northern Venezuela. It is the only member of the genus Spiza, though some sources list another supposedly extinct species.
                 </div>
             </div>
         </div></>
