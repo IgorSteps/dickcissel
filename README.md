@@ -1,6 +1,9 @@
 # dickcissel
 A React web app for bird counting
 
+[JIRA Board](https://stepanen.atlassian.net/jira/software/projects/DIC/boards/3)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
