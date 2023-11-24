@@ -13,7 +13,7 @@ export default function Home(props) {
                         width="500"
                         height="361"
                         className="d-inline-block align-top"
-                        alt="Dickcissel Photo"
+                        alt="Dickcissel"
                     />
                 </div>
                 <div className="home-page-about">
