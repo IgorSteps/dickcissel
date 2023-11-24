@@ -1,8 +1,9 @@
 import React from "react"
-import BasicExample from "../navbar/navbar"
+import BasicNavbar from "../navbar/navbar"
 export default function Login({ Mode }) {
   return (
-    <><BasicExample /><div className="login-form-container">
+    <><BasicNavbar />
+    <div className="login-form-container">
       <form className="login-form">
         <div className="login-form-content">
           <h3 className="login-form-title">Login</h3>
