@@ -2,7 +2,7 @@ import BasicNavbar from "../navbar/navbar";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState , useEffect} from "react"; 
-
+import AdditionConfirmation from "./additionConfirm";
 
 export default function Observation(props) {
     // Validation.
@@ -25,20 +25,26 @@ export default function Observation(props) {
     };
 
     // Warn users if they try to leave a page with unsaved changes.
-    useEffect(() => {
-            const handleBeforeUnload = (e) => {
-            const confirmationMessage = ''
-            e.returnValue = confirmationMessage;
-            return confirmationMessage;
-            };
+    // useEffect(() => {
+    //         const handleBeforeUnload = (e) => {
+    //             const confirmationMessage = ''
+    //             e.returnValue = confirmationMessage;
+    //             return confirmationMessage;
+    //         };
 
-            window.addEventListener('beforeunload', handleBeforeUnload);
+    //         window.addEventListener('beforeunload', handleBeforeUnload);
 
-            return () => {
-                window.removeEventListener('beforeunload', handleBeforeUnload);
-            };
-        }, 
-    []);
+    //         return () => {
+    //             window.removeEventListener('beforeunload', handleBeforeUnload);
+    //         };
+    //     }, 
+    // []);
+
+    // Modal show
+    const [modalShow, setModalShow] = useState(false);
+
+    const handleModalClose = () => setModalShow(false);
+    const handleModalShow = () => setModalShow(true);
 
     return (
         <>
@@ -63,9 +69,11 @@ export default function Observation(props) {
                                 {countErrMessage && <div className="text-danger">{countErrMessage}</div>}
                             </Form.Group>
 
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" onClick={handleModalShow}>
                                 Submit
                             </Button>
+                            <AdditionConfirmation show={modalShow} handleClose={handleModalClose} />
+
 
                         </Form>
                     </div>
