@@ -37,6 +37,21 @@ export default function Observation(props) {
                         />
                     </div>
                 </div>
+
+                <div class="row edit-row justify-content-center mt-3">
+                    <div class="col-md-4 d-flex justify-content-start align-items-center">
+                        <div>Bird Name</div>
+                        <div className="ms-5">Bird Count</div>
+                    </div>
+                    
+                    <div class="col-md-4 d-flex justify-content-end align-items-center">
+                        <div>
+                            <button class="btn btn-info me-2">View</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     )
