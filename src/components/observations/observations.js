@@ -1,8 +1,45 @@
 import BasicNavbar from "../navbar/navbar";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import React, { useState , useEffect} from "react"; 
+
 
 export default function Observation(props) {
+    // Validation.
+    const [nameErrorMessage, setNameErrorMessage] = useState('') 
+    const validateNameIsNotNil = (name) => {
+        if (name.trim().length === 0) {
+            setNameErrorMessage('Name field must not be empty') 
+        } else {
+            setNameErrorMessage('') 
+        }
+    };
+
+    const [countErrMessage, setCountErrorMessage] = useState('') 
+    const validateCountIsNotNil = (count) => {
+        if (count.trim().length === 0) {
+            setCountErrorMessage('Count field must not be empty') 
+        } else {
+            setCountErrorMessage('') 
+        }
+    };
+
+    // Warn users if they try to leave a page with unsaved changes.
+    useEffect(() => {
+            const handleBeforeUnload = (e) => {
+            const confirmationMessage = ''
+            e.returnValue = confirmationMessage;
+            return confirmationMessage;
+            };
+
+            window.addEventListener('beforeunload', handleBeforeUnload);
+
+            return () => {
+                window.removeEventListener('beforeunload', handleBeforeUnload);
+            };
+        }, 
+    []);
+
     return (
         <>
             <BasicNavbar />
@@ -13,12 +50,17 @@ export default function Observation(props) {
                         <Form>
                             <Form.Group className="mb-3">
                                 <Form.Label>Bird name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter bird name" />
+                                <Form.Control type="text" placeholder="Enter bird name" 
+                                onChange={(e) => validateNameIsNotNil(e.target.value)}
+                                />
+                                {nameErrorMessage && <div className="text-danger">{nameErrorMessage}</div>}
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Number of Birds</Form.Label>
-                                <Form.Control type="number" placeholder="Number of birds" />
+                                <Form.Control type="number" placeholder="Number of birds"  onChange={(e) => validateCountIsNotNil(e.target.value)}
+                                />
+                                {countErrMessage && <div className="text-danger">{countErrMessage}</div>}
                             </Form.Group>
 
                             <Button variant="primary" type="submit">
