@@ -6,26 +6,38 @@ export default function Observation(props) {
     return (
         <>
             <BasicNavbar />
-            <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+            <div class="observation-form container">
+            <h3 className="login-form-title">Observations</h3>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <Form>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Bird name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter bird name" />
+                            </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Number of Birds</Form.Label>
+                                <Form.Control type="number" placeholder="Number of birds" />
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+
+                        </Form>
+                    </div>
+                    <div class="col-md-4">
+                        <img
+                            src="dickcissel.jpeg"
+                            width="500"
+                            height="361"
+                            class="img-fluid"
+                            alt="Dickcissel"
+                        />
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

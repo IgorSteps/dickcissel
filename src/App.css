@@ -11,8 +11,9 @@
   height: 100vh;
 }
 
-.login-form {
-  width: 420px;
+.login-form,
+.observation-form {
+  width: 620px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
   padding-top: 30px;
   padding-bottom: 30px;
@@ -59,4 +60,13 @@ label {
 
 .home-page-title {
   margin-top: 2.5rem;
+}
+
+.observation-form {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 8px;
+  background-color: white;
 }
