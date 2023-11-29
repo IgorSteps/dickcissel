@@ -2,7 +2,7 @@ import BasicNavbar from "../navbar/navbar";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState , useEffect} from "react"; 
-import AdditionConfirmation from "./additionConfirm";
+import ConfirmationModal from "./confirmationModal";
 
 export default function Observation(props) {
     // Validation.
@@ -49,10 +49,10 @@ export default function Observation(props) {
     return (
         <>
             <BasicNavbar />
-            <div class="observation-form container">
+            <div className="observation-form container">
             <h3 className="login-form-title">Observations</h3>
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
+                <div className="row justify-content-center">
+                    <div className="col-md-4">
                         <Form>
                             <Form.Group className="mb-3">
                                 <Form.Label>Bird name</Form.Label>
@@ -69,35 +69,35 @@ export default function Observation(props) {
                                 {countErrMessage && <div className="text-danger">{countErrMessage}</div>}
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" onClick={handleModalShow}>
+                            <Button variant="primary"  onClick={handleModalShow}>
                                 Submit
                             </Button>
-                            <AdditionConfirmation show={modalShow} handleClose={handleModalClose} />
+                            <ConfirmationModal show={modalShow} handleClose={handleModalClose} />
 
 
                         </Form>
                     </div>
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <img
                             src="dickcissel.jpeg"
                             width="500"
                             height="361"
-                            class="img-fluid"
+                            className="img-fluid"
                             alt="Dickcissel"
                         />
                     </div>
                 </div>
 
-                <div class="row edit-row justify-content-center mt-3">
-                    <div class="col-md-4 d-flex justify-content-start align-items-center">
+                <div className="row edit-row justify-content-center mt-3">
+                    <div className="col-md-4 d-flex justify-content-start align-items-center">
                         <div>Bird Name</div>
                         <div className="ms-5">Bird Count</div>
                     </div>
                     
-                    <div class="col-md-4 d-flex justify-content-end align-items-center">
+                    <div className="col-md-4 d-flex justify-content-end align-items-center">
                         <div>
-                            <button class="btn btn-info me-2">View</button>
-                            <button class="btn btn-primary">Edit</button>
+                            <button className="btn btn-info me-2">View</button>
+                            <button className="btn btn-primary">Edit</button>
                         </div>
                     </div>
                 </div>

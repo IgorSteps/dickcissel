@@ -1,23 +1,20 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function AdditionConfirmation({ show, handleClose }) {
+function ConfirmationModal({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Success</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>You've successfuly added an observation</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Ok
           </Button>
         </Modal.Footer>
       </Modal>
   );
 }
 
-export default AdditionConfirmation;
+export default ConfirmationModal;
