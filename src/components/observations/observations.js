@@ -6,22 +6,23 @@ import ConfirmationModal from "./confirmationModal";
 import ViewModal from "./viewModal";
 import EditModal from "./editModal";
 
-
+const observationEndpoint = '/api/observations';
+const post = 'POST'
+const contentType = {'Content-Type': 'application/json'}
 
 export default function Observation(props) {    
-    // Initial states are empty strings and an empty array.
+    // Initial states are empty strings, and an empty array.
     const [birdName, setBirdName] = useState('');
     const [birdCount, setBirdCount] = useState('');
     const [observations, setObservations] = useState([]);
-    
-    // Add a list to hold all observations.
     const updateObservationsList = (newObservation) => {
+        console.debug('Updating observations list state: ', newObservation)
         setObservations(prevObservations => [...prevObservations, newObservation]);
     };
-
     const handleSuccessfulAdd = (newObservation) => {
         updateObservationsList(newObservation);
         handleModalShow()
+        console.debug('Updating birdName & birdCount states: ', newObservation)
         setBirdName('');
         setBirdCount('');
     };
@@ -29,39 +30,40 @@ export default function Observation(props) {
     // Validation.
     const [nameErrorMessage, setNameErrorMessage] = useState('') 
     const [countErrMessage, setCountErrorMessage] = useState('') 
-    
     const validateNameIsNotNil = (name) => {
         if (name.trim().length === 0) {
+            console.debug('Updating nameErrorMessage state: ', name)
             setNameErrorMessage('Name field must not be empty');
             return false;
         } else {
+            console.debug('Updating nameErrorMessage state: ', name)
             setNameErrorMessage('');
             return true;
         }
     };
-    
     const validateCountIsNotNil = (count) => {
         if (count.length === 0) {
+            console.debug('Updating countErrMessage state: ', count)
             setCountErrorMessage('Count field must not be empty');
             return false;
         } else {
+            console.debug('Updating countErrMessage state: ', count)
             setCountErrorMessage('');
             return true;
         }
     };
 
-    // Function to handle form submission.
+    // Function to handle observation addition.
     const handleSubmit = async () => {
-       
         if (!validateNameIsNotNil(birdName) || !validateCountIsNotNil(birdCount)) {
             return;
         }
 
         // Post data to MirageJS server.
         try {
-            const response = await fetch('/api/observations', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            const response = await fetch(observationEndpoint, {
+                method: post,
+                headers: contentType,
                 body: JSON.stringify({ birdName, birdCount })
             });
 
@@ -77,8 +79,6 @@ export default function Observation(props) {
             console.error('Failed to send data to mirage server: ', error);
         }
     };
-
-  
 
     // Warn users if they try to leave a page with unsaved changes.
     useEffect(() => {
@@ -96,22 +96,39 @@ export default function Observation(props) {
         }, 
     []);
 
-    // Cofirmation Modal states.
+    // Confirmation Modal states.
     const [modalShow, setModalShow] = useState(false);
-    const handleModalClose = () => setModalShow(false);
-    const handleModalShow = () => setModalShow(true);
+    const handleModalClose = () => {
+        console.debug('Updating modalShow state to false')
+        setModalShow(false);
+    }
+    const handleModalShow = () => {
+        console.debug('Updating modalShow state to true')
+        setModalShow(true);
+    }
 
     // View Modal states.
     const [viewModalShow, setViewModalShow] = useState(false);
-    const handleViewModalClose = () => setViewModalShow(false);
-    const handleViewModalShow = () => setViewModalShow(true);
+    const handleViewModalClose = () => {
+        console.debug('Updating viewModalShow state to false')
+        setViewModalShow(false);
+    }
+    const handleViewModalShow = () => {
+        console.debug('Updating viewModalShow state to true')
+        setViewModalShow(true);
+    }
 
      // Edit Modal states.
     const [editModalShow, setEditModalShow] = useState(false);
-    const handleEditModalClose = () => setEditModalShow(false);
-    const handleEditModalShow = () => setEditModalShow(true);
+    const handleEditModalClose = () => {
+        console.debug('Updating editModalShow state to false')
+        setEditModalShow(false);
+    }
+    const handleEditModalShow = () => {
+        console.debug('Updating editModalShow state to true')
+        setEditModalShow(true);
+    }
 
-    console.debug("Observations map:", observations);
     return (
         <>
             <BasicNavbar />

@@ -30,8 +30,7 @@ export function makeServer({ environment = "test" } = {}) {
       // Add observation
       this.post('/observations', (schema, request) => {
         const observation = JSON.parse(request.requestBody);
-        // Add observation logic here
-        // Return observation data
+        console.debug('received add observation request', observation)
         return schema.observations.create(observation);
       });
 
