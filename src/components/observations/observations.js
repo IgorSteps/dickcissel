@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import React, { useState , useEffect} from "react"; 
 import ConfirmationModal from "./confirmationModal";
 import ViewModal from "./viewModal";
+import EditModal from "./editModal";
 
 export default function Observation(props) {
     // Validation.
@@ -41,15 +42,20 @@ export default function Observation(props) {
     //     }, 
     // []);
 
-    // Cofirmation Modal show
+    // Cofirmation Modal states
     const [modalShow, setModalShow] = useState(false);
     const handleModalClose = () => setModalShow(false);
     const handleModalShow = () => setModalShow(true);
 
-    // View Modal show.
+    // View Modal states.
     const [viewModalShow, setViewModalShow] = useState(false);
     const handleViewModalClose = () => setViewModalShow(false);
     const handleViewModalShow = () => setViewModalShow(true);
+
+     // Edit Modal states.
+     const [editModalShow, setEditModalShow] = useState(false);
+     const handleEditModalClose = () => setEditModalShow(false);
+     const handleEditModalShow = () => setEditModalShow(true);
 
     return (
         <>
@@ -103,7 +109,8 @@ export default function Observation(props) {
                         <div>
                             <button className="btn btn-info me-2" onClick={handleViewModalShow}>View</button>
                             <ViewModal show={viewModalShow} handleClose={handleViewModalClose} />
-                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn btn-primary" onClick={handleEditModalShow}>Edit</button>
+                            <EditModal show={editModalShow} handleClose={handleEditModalClose} />
                         </div>
                     </div>
                 </div>
