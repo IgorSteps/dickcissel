@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState , useEffect} from "react"; 
 import ConfirmationModal from "./confirmationModal";
+import ViewModal from "./viewModal";
 
 export default function Observation(props) {
     // Validation.
@@ -40,11 +41,15 @@ export default function Observation(props) {
     //     }, 
     // []);
 
-    // Modal show
+    // Cofirmation Modal show
     const [modalShow, setModalShow] = useState(false);
-
     const handleModalClose = () => setModalShow(false);
     const handleModalShow = () => setModalShow(true);
+
+    // View Modal show.
+    const [viewModalShow, setViewModalShow] = useState(false);
+    const handleViewModalClose = () => setViewModalShow(false);
+    const handleViewModalShow = () => setViewModalShow(true);
 
     return (
         <>
@@ -96,7 +101,8 @@ export default function Observation(props) {
                     
                     <div className="col-md-4 d-flex justify-content-end align-items-center">
                         <div>
-                            <button className="btn btn-info me-2">View</button>
+                            <button className="btn btn-info me-2" onClick={handleViewModalShow}>View</button>
+                            <ViewModal show={viewModalShow} handleClose={handleViewModalClose} />
                             <button className="btn btn-primary">Edit</button>
                         </div>
                     </div>
