@@ -15,14 +15,15 @@ export default function Observation(props) {
     const [birdName, setBirdName] = useState('');
     const [birdCount, setBirdCount] = useState('');
     const [observations, setObservations] = useState([]);
+
     const updateObservationsList = (newObservation) => {
-        console.debug('Updating observations list state: ', newObservation)
+        console.debug('Add newObservation to observations list: ', newObservation)
         setObservations(prevObservations => [...prevObservations, newObservation]);
     };
+
     const handleSuccessfulAdd = (newObservation) => {
         updateObservationsList(newObservation);
         handleModalShow()
-        console.debug('Updating birdName & birdCount states: ', newObservation)
         setBirdName('');
         setBirdCount('');
     };
@@ -32,22 +33,20 @@ export default function Observation(props) {
     const [countErrMessage, setCountErrorMessage] = useState('') 
     const validateNameIsNotNil = (name) => {
         if (name.trim().length === 0) {
-            console.debug('Updating nameErrorMessage state: ', name)
             setNameErrorMessage('Name field must not be empty');
             return false;
         } else {
-            console.debug('Updating nameErrorMessage state: ', name)
             setNameErrorMessage('');
             return true;
         }
     };
     const validateCountIsNotNil = (count) => {
         if (count.length === 0) {
-            console.debug('Updating countErrMessage state: ', count)
+           // console.debug('Updating countErrMessage state: ', count)
             setCountErrorMessage('Count field must not be empty');
             return false;
         } else {
-            console.debug('Updating countErrMessage state: ', count)
+            //console.debug('Updating countErrMessage state: ', count)
             setCountErrorMessage('');
             return true;
         }
@@ -68,9 +67,8 @@ export default function Observation(props) {
             });
 
             if (response.ok) {
-                 // Handle successful addition
                 const newObservation = await response.json();
-                console.debug("New Observation:", newObservation);
+                console.debug("received response from server with new observation:", newObservation);
                 handleSuccessfulAdd(newObservation)
             } else {
                 console.error('Failed to add observation');
@@ -99,35 +97,73 @@ export default function Observation(props) {
     // Confirmation Modal states.
     const [modalShow, setModalShow] = useState(false);
     const handleModalClose = () => {
-        console.debug('Updating modalShow state to false')
         setModalShow(false);
     }
     const handleModalShow = () => {
-        console.debug('Updating modalShow state to true')
         setModalShow(true);
     }
 
     // View Modal states.
     const [viewModalShow, setViewModalShow] = useState(false);
     const handleViewModalClose = () => {
-        console.debug('Updating viewModalShow state to false')
         setViewModalShow(false);
     }
     const handleViewModalShow = () => {
-        console.debug('Updating viewModalShow state to true')
         setViewModalShow(true);
     }
 
-     // Edit Modal states.
+    // Edit Modal states.
+    // State for tracking the current observation that user wants to edit.
+    const [indexOfObservationToEdit, setIndexOfObservationToEdit] = useState(null);
     const [editModalShow, setEditModalShow] = useState(false);
     const handleEditModalClose = () => {
-        console.debug('Updating editModalShow state to false')
         setEditModalShow(false);
     }
-    const handleEditModalShow = () => {
-        console.debug('Updating editModalShow state to true')
-        setEditModalShow(true);
+    const handleEditModalShow = (index) => {
+        if (index === null || undefined) {
+            console.error("Index of observation to edit is nil or undefined");
+            alert("Unexpected error occured, please try again later");
+        } else {
+            setIndexOfObservationToEdit(index);
+            setEditModalShow(true);
+        }
     }
+    const handleUpdatingObservation = (newBirdName, newBirdCount) => {
+        console.debug("Data to be used for update: ", {
+                "New Bird name": newBirdName,
+                "New Bird count": newBirdCount,
+                "Editing observation index": indexOfObservationToEdit
+            });
+        
+        // For some reason, observation object is like this:
+        //      observation: {
+        //          observation: {birdName: ... ,birdCount ...},  
+        //          observation: {birdName: ... ,birdCount ...},  
+        //      }
+        // I am not sure why and we are short on time to debug this, so
+        // leaving it like this.
+        const updatedObservations = observations.map((outerObservation, index) => {
+            if (index === indexOfObservationToEdit) {
+                // Due to naure of .map() in JS(it returns new list), need to use spread(...)
+                // operator to copy accross existing observations.
+                return {
+                    ...outerObservation,
+                    observation: {
+                        ...outerObservation.observation,
+                        birdName: newBirdName,
+                        birdCount: newBirdCount
+                    }
+                };
+            }
+            return outerObservation;
+        });
+        console.debug("Updated observation ", updatedObservations)
+
+        // Don't forget to set observations list to newly updated one and set state of index back to nil.
+        setObservations(updatedObservations);
+        setIndexOfObservationToEdit(null);
+        console.debug("Observations list after update", observations)
+      };
 
     return (
         <>
@@ -182,6 +218,8 @@ export default function Observation(props) {
                 {observations.map((observation, index) => (
                     <div className="row edit-row justify-content-center mt-3"  key={index}>
                         <div className="col-md-4 d-flex justify-content-start align-items-center">
+                            {/* {See comment in handleUpdatingObservation on why I have observation.observation.birdName and
+                                 not observation.birdName} */}
                             <div>Bird Name: {observation.observation.birdName}</div>
                             <div className="ms-5">Bird Count: {observation.observation.birdCount}</div>
                         </div>
@@ -189,9 +227,20 @@ export default function Observation(props) {
                         <div className="col-md-4 d-flex justify-content-end align-items-center">
                             <div>
                                 <button className="btn btn-info me-2" onClick={handleViewModalShow}>View</button>
-                                <ViewModal birdName={observation.observation.birdName} birdCount={observation.observation.birdCount} show={viewModalShow} handleClose={handleViewModalClose} />
-                                <button className="btn btn-primary" onClick={handleEditModalShow}>Edit</button>
-                                <EditModal show={editModalShow} handleClose={handleEditModalClose} />
+                                <ViewModal 
+                                    birdName={observation.observation.birdName}
+                                    birdCount={observation.observation.birdCount} 
+                                    show={viewModalShow} 
+                                    handleClose={handleViewModalClose} 
+                                />
+                                <button className="btn btn-primary" onClick={() => handleEditModalShow(index)}>Edit</button>
+                                <EditModal 
+                                    show={editModalShow}
+                                    handleClose={handleEditModalClose}
+                                    birdName={observations[indexOfObservationToEdit].birdName}
+                                    birdCount={observations[indexOfObservationToEdit].birdCount}
+                                    onUpdate={handleUpdatingObservation}
+                                />
                             </div>
                         </div>
                     </div>

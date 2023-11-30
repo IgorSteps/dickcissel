@@ -6,47 +6,23 @@ export function makeServer({ environment = "test" } = {}) {
     environment,
 
     models: {
-      users: Model,
       observation: Model,
     },
 
     routes() {
       this.namespace = "api"
 
-       // Login
-       this.post('/login', (schema, request) => {
-        const { username, password } = JSON.parse(request.requestBody);
-        // Authentication logic here
-        // Return user data or error
-      });
-
-      // Register
-      this.post('/register', (schema, request) => {
-        const newUser = JSON.parse(request.requestBody);
-        // Registration logic here
-        // Return user data or error
-      });
-
-      // Add observation
+      // Add observation.
       this.post('/observations', (schema, request) => {
         const observation = JSON.parse(request.requestBody);
         console.debug('received add observation request', observation)
-        return schema.observations.create(observation);
-      });
+        
+        // Note that the collection is the pluralized form of the model's model name:
+        // https://miragejs.com/docs/main-concepts/models/#creating-models
+        const newObservation = schema.observations.create(observation);
+        console.debug('new observation created in schema:', newObservation);
 
-      // View observation
-      this.get('/observations/:id', (schema, request) => {
-        let id = request.params.id;
-        // Fetch observation logic here
-        return schema.observations.find(id);
-      });
-
-      // Edit observation
-      this.put('/observations/:id', (schema, request) => {
-        let id = request.params.id;
-        const newObservation = JSON.parse(request.requestBody);
-        // Update observation logic here
-        return schema.observations.find(id).update(newObservation);
+        return newObservation;
       });
     },
   })
