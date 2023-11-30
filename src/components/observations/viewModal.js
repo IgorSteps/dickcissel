@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ViewModal({ show, handleClose }) {
+function ViewModal({birdName, birdCount, show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -10,12 +10,12 @@ function ViewModal({ show, handleClose }) {
             <Modal.Body>
                 <div className="row">
                     <div className="col-12">
-                    <div className="p-3 border bg-light">Name</div>
+                    <div className="p-3 border bg-light">Bird Name: {birdName}</div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12">
-                    <div className="p-3 border bg-light">Count</div>
+                    <div className="p-3 border bg-light">Count: {birdCount}</div>
                     </div>
                 </div>
             </Modal.Body>

@@ -178,7 +178,7 @@ export default function Observation(props) {
                     </div>
                 </div>
 
-                {/* {Rener this row for every observation added.} */}
+                {/* {Render this row for every observation added.} */}
                 {observations.map((observation, index) => (
                     <div className="row edit-row justify-content-center mt-3"  key={index}>
                         <div className="col-md-4 d-flex justify-content-start align-items-center">
@@ -189,7 +189,7 @@ export default function Observation(props) {
                         <div className="col-md-4 d-flex justify-content-end align-items-center">
                             <div>
                                 <button className="btn btn-info me-2" onClick={handleViewModalShow}>View</button>
-                                <ViewModal show={viewModalShow} handleClose={handleViewModalClose} />
+                                <ViewModal birdName={observation.observation.birdName} birdCount={observation.observation.birdCount} show={viewModalShow} handleClose={handleViewModalClose} />
                                 <button className="btn btn-primary" onClick={handleEditModalShow}>Edit</button>
                                 <EditModal show={editModalShow} handleClose={handleEditModalClose} />
                             </div>
