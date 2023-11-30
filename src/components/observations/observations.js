@@ -123,6 +123,7 @@ export default function Observation(props) {
         if (index === null || undefined) {
             console.error("Index of observation to edit is nil or undefined");
             alert("Unexpected error occured, please try again later");
+            return;
         } else {
             setIndexOfObservationToEdit(index);
             setEditModalShow(true);
@@ -237,8 +238,9 @@ export default function Observation(props) {
                                 <EditModal 
                                     show={editModalShow}
                                     handleClose={handleEditModalClose}
-                                    birdName={observations[indexOfObservationToEdit].birdName}
-                                    birdCount={observations[indexOfObservationToEdit].birdCount}
+                                    // Need to have '?' operator because indexOfObservationToEdit is nil at the very start.
+                                    birdName={observations[indexOfObservationToEdit]?.birdName}
+                                    birdCount={observations[indexOfObservationToEdit]?.birdCount}
                                     onUpdate={handleUpdatingObservation}
                                 />
                             </div>
