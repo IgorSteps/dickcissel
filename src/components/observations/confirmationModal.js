@@ -7,10 +7,10 @@ function ConfirmationModal({ show, handleClose }) {
         <Modal.Header closeButton>
           <Modal.Title>Success</Modal.Title>
         </Modal.Header>
-        <Modal.Body>You've successfuly added an observation</Modal.Body>
+        <Modal.Body>You've successfuly added an observation!</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Ok
+          <Button variant="primary" onClick={handleClose}>
+            OK
           </Button>
         </Modal.Footer>
       </Modal>

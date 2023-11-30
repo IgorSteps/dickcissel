@@ -236,15 +236,17 @@ export default function Observation(props) {
                                     handleClose={handleViewModalClose} 
                                 />
                                 <button className="btn btn-primary" onClick={() => handleEditModalShow(index)}>Edit</button>
-                                {/* {Hacky way to stop weird triggering of form EditModal submission when Observation Form is submitted} */}
-                                {observations[indexOfObservationToEdit]?.observation.birdName && <EditModal
-                                    show={editModalShow}
-                                    handleClose={handleEditModalClose}
-                                    // Need to have '?' operator because indexOfObservationToEdit is nil at the very start.
-                                    birdName={observations[indexOfObservationToEdit]?.observation.birdName}
-                                    birdCount={observations[indexOfObservationToEdit]?.observation.birdCount}
-                                    onUpdate={handleUpdatingObservation}
-                                />}
+                                {/* {Hacky way to stop weird triggering of EditModal Form submission when Observation Form is submitted} */}
+                                {observations[indexOfObservationToEdit]?.observation.birdName && 
+                                    <EditModal
+                                        show={editModalShow}
+                                        handleClose={handleEditModalClose}
+                                        // Need to have '?' operator because indexOfObservationToEdit is nil at the very start.
+                                        birdName={observations[indexOfObservationToEdit]?.observation.birdName}
+                                        birdCount={observations[indexOfObservationToEdit]?.observation.birdCount}
+                                        onUpdate={handleUpdatingObservation}
+                                    />
+                                }
                             </div>
                         </div>
                     </div>

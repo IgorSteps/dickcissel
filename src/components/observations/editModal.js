@@ -4,8 +4,6 @@ import Form from 'react-bootstrap/Form';
 import React, { useState } from "react"; 
 
 function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
-  console.debug("bird name", birdName);
-  console.debug("bird count", birdCount);
   const [newBirdName, setNewBirdName] = useState(birdName);
   const [newBirdCount, setNewBirdCount] = useState(birdCount);
   const handleSubmitEdit = (event) => {
@@ -39,6 +37,21 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
            return true;
        }
    };
+
+   // Warn users if they try to leave a page with unsaved changes.
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+        const msg = ''
+        e.returnValue = msg;
+        return msg;
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  },[]);
 
   return (
     <Modal show={show} onHide={handleClose}>
