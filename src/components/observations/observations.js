@@ -42,18 +42,18 @@ export default function Observation(props) {
     };
     const validateCountIsNotNil = (count) => {
         if (count.length === 0) {
-           // console.debug('Updating countErrMessage state: ', count)
             setCountErrorMessage('Count field must not be empty');
             return false;
         } else {
-            //console.debug('Updating countErrMessage state: ', count)
             setCountErrorMessage('');
             return true;
         }
     };
 
     // Function to handle observation addition.
-    const handleSubmit = async () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        event.stopPropagation();
         if (!validateNameIsNotNil(birdName) || !validateCountIsNotNil(birdCount)) {
             return;
         }
@@ -74,6 +74,7 @@ export default function Observation(props) {
                 console.error('Failed to add observation');
             }
         } catch (error) {
+            alert("Sorry, there was a problem processing your observation, please try again later.")
             console.error('Failed to send data to mirage server: ', error);
         }
     };
@@ -81,9 +82,9 @@ export default function Observation(props) {
     // Warn users if they try to leave a page with unsaved changes.
     useEffect(() => {
             const handleBeforeUnload = (e) => {
-                const confirmationMessage = ''
-                e.returnValue = confirmationMessage;
-                return confirmationMessage;
+                const msg = ''
+                e.returnValue = msg;
+                return msg;
             };
 
             window.addEventListener('beforeunload', handleBeforeUnload);
@@ -173,7 +174,7 @@ export default function Observation(props) {
             <h3 className="login-form-title">Observations</h3>
                 <div className="row justify-content-center">
                     <div className="col-md-4">
-                        <Form>
+                        <Form >
                             <Form.Group className="mb-3">
                                 <Form.Label>Bird name</Form.Label>
                                 <Form.Control 
@@ -196,7 +197,7 @@ export default function Observation(props) {
                                 {countErrMessage && <div className="text-danger">{countErrMessage}</div>}
                             </Form.Group>
 
-                            <Button variant="primary"  onClick={handleSubmit}>
+                            <Button variant="primary" type="button" onClick={handleSubmit}>
                                 Submit
                             </Button>
                             <ConfirmationModal show={modalShow} handleClose={handleModalClose} />
@@ -235,14 +236,15 @@ export default function Observation(props) {
                                     handleClose={handleViewModalClose} 
                                 />
                                 <button className="btn btn-primary" onClick={() => handleEditModalShow(index)}>Edit</button>
-                                <EditModal 
+                                {/* {Hacky way to stop weird triggering of form EditModal submission when Observation Form is submitted} */}
+                                {observations[indexOfObservationToEdit]?.observation.birdName && <EditModal
                                     show={editModalShow}
                                     handleClose={handleEditModalClose}
                                     // Need to have '?' operator because indexOfObservationToEdit is nil at the very start.
-                                    birdName={observations[indexOfObservationToEdit]?.birdName}
-                                    birdCount={observations[indexOfObservationToEdit]?.birdCount}
+                                    birdName={observations[indexOfObservationToEdit]?.observation.birdName}
+                                    birdCount={observations[indexOfObservationToEdit]?.observation.birdCount}
                                     onUpdate={handleUpdatingObservation}
-                                />
+                                />}
                             </div>
                         </div>
                     </div>

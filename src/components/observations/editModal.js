@@ -4,12 +4,41 @@ import Form from 'react-bootstrap/Form';
 import React, { useState } from "react"; 
 
 function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
+  console.debug("bird name", birdName);
+  console.debug("bird count", birdCount);
   const [newBirdName, setNewBirdName] = useState(birdName);
   const [newBirdCount, setNewBirdCount] = useState(birdCount);
-  const handleSubmit = () => {
+  const handleSubmitEdit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!validateEditNameIsNotNil(newBirdName) || !validateEditCountIsNotNil(newBirdCount)) {
+      return;
+    }
     onUpdate(newBirdName, newBirdCount);
     handleClose();
   };
+
+   // Validation.
+   const [editNameErrorMessage, setEditNameErrorMessage] = useState('') 
+   const [editCountErrMessage, setEditCountErrorMessage] = useState('') 
+   const validateEditNameIsNotNil = (name) => {
+       if (name.trim().length === 0) {
+           setEditNameErrorMessage('Name field must not be empty');
+           return false;
+       } else {
+           setEditNameErrorMessage('');
+           return true;
+       }
+   };
+   const validateEditCountIsNotNil = (count) => {
+       if (count.length === 0) {
+           setEditCountErrorMessage('Count field must not be empty');
+           return false;
+       } else {
+           setEditCountErrorMessage('');
+           return true;
+       }
+   };
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -24,8 +53,10 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
                         <Form.Control 
                           type="text" 
                           placeholder="Enter new bird name" 
-                          onChange={(e) => setNewBirdName(e.target.value)}  
+                          onChange={(e) => setNewBirdName(e.target.value)}
+                          value={newBirdName}  
                         />
+                        {editNameErrorMessage && <div className="text-danger">{editNameErrorMessage}</div>}
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBirdCount">
@@ -34,7 +65,9 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
                           type="number" 
                           placeholder="Enter new bird count" 
                           onChange={(e) => setNewBirdCount(e.target.value)}
+                          value={newBirdCount}  
                         />
+                        {editCountErrMessage && <div className="text-danger">{editCountErrMessage}</div>}
                     </Form.Group>
                     
                 </Form>
@@ -44,7 +77,7 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" type="button" onClick={handleSubmitEdit}>
             Submit
           </Button>
           
