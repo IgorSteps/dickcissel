@@ -2,7 +2,8 @@ import React from "react"
 import BasicNavbar from "../navbar/navbar"
 export default function Login({ Mode }) {
   return (
-    <><BasicNavbar />
+    <>
+    <BasicNavbar />
     <div className="login-form-container">
       <form className="login-form">
         <div className="login-form-content">
@@ -39,6 +40,7 @@ export default function Login({ Mode }) {
 
         </div>
       </form>
-    </div></>
+    </div>
+    </>
   )
 }
