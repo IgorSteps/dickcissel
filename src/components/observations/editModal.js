@@ -38,21 +38,6 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
        }
    };
 
-   // Warn users if they try to leave a page with unsaved changes.
-  useEffect(() => {
-    const handleBeforeUnload = (e) => {
-        const msg = ''
-        e.returnValue = msg;
-        return msg;
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  },[]);
-
   return (
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
