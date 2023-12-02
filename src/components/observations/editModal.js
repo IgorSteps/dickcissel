@@ -47,8 +47,9 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
                 <Form>
 
                     <Form.Group className="mb-3" controlId="formBirdName">
-                        <Form.Label>Bird Name</Form.Label>
+                        <Form.Label htmlFor='birdname'>Bird Name</Form.Label>
                         <Form.Control 
+                          name="birdname" id="birdname"
                           type="text" 
                           placeholder="Enter new bird name" 
                           onChange={(e) => setNewBirdName(e.target.value)}
@@ -58,8 +59,9 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBirdCount">
-                        <Form.Label>Count</Form.Label>
+                        <Form.Label htmlFor='birdcount'>Count</Form.Label>
                         <Form.Control 
+                          name="birdcount" id="birdcount"
                           type="number" 
                           placeholder="Enter new bird count" 
                           onChange={(e) => setNewBirdCount(e.target.value)}
@@ -72,10 +74,10 @@ function EditModal({ birdName, birdCount, onUpdate, show, handleClose }) {
             </Modal.Body>
         <Modal.Footer>
 
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" type='button' onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" type="button" onClick={handleSubmitEdit}>
+          <Button variant="primary" type="submit" onClick={handleSubmitEdit}>
             Submit
           </Button>
           
