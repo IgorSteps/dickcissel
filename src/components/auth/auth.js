@@ -13,6 +13,7 @@ export default function Auth() {
 
     const changeAuthMode = () => {
       setAuthMode(authMode === "login" ? "register" : "login");
+      console.debug("Auth mode", authMode)
     }
 
     return (
@@ -20,7 +21,7 @@ export default function Auth() {
           {authMode === "login" ? (
             <Login mode={changeAuthMode} handleLoginSuccess={handleLoginSuccess} />
           ) : (
-            <Register Mode={changeAuthMode} />
+            <Register mode={changeAuthMode} handleLoginSuccess={handleLoginSuccess} />
           )}
         </>
       );
