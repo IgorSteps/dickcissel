@@ -121,9 +121,9 @@ export default function Register({ mode, handleLoginSuccess}) {
                     onChange={(e) => validatePassword(e.target.value)}
                     required
                     />
-                    <small className="form-text text-muted">
+                    <p className="text-muted">
                         Password must be at least 8 characters and include uppercase, lowercase, a number, and a special character.
-                    </small>
+                    </p>
                     {passwordErrorMessage && <div className="text-danger">{passwordErrorMessage}</div>}
                 </div>
                 <div className="d-grid gap-2 mt-3">
