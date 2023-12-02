@@ -8,7 +8,7 @@ function Meetup({ title, date, location }) {
         <CardBody>
             <CardTitle>{title}</CardTitle>
             <p className="text-muted">{date}</p>
-            <CardText>{location}</CardText>
+            <CardText>Location: {location}</CardText>
         </CardBody>
     </Card>
   );
