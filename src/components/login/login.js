@@ -1,16 +1,27 @@
 import React from "react"
 import BasicNavbar from "../navbar/navbar"
-export default function Login({ Mode }) {
+import { useNavigate } from 'react-router-dom';
+
+export default function Login({ mode, handleLoginSuccess }) {
+  let navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    e.stopPropagation();
+    handleLoginSuccess();
+    navigate("/home");
+  };
+
   return (
     <>
     <BasicNavbar />
     <div className="login-form-container">
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-form-content">
           <h3 className="login-form-title">Login</h3>
           <div className="text-center">
             Not registered yet?{" "}
-            <span className="link-primary" onClick={Mode}>
+            <span className="link-primary" onClick={mode}>
               Register
             </span>
           </div>
