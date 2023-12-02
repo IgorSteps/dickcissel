@@ -1,20 +1,27 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Login from "../login/login";
 import Register from "../register/register";
+import {AuthContext} from "../context/authContext";
 
-export default function Auth(props) {
+export default function Auth() {
     let [authMode, setAuthMode] = useState("login")
+    const { login } = useContext(AuthContext);
+
+    const handleLoginSuccess = () => {
+      login();
+    };
 
     const changeAuthMode = () => {
-      setAuthMode(authMode === "login" ? "register" : "login")
+      setAuthMode(authMode === "login" ? "register" : "login");
+      console.debug("Auth mode", authMode)
     }
 
     return (
         <>
           {authMode === "login" ? (
-            <Login Mode={changeAuthMode} />
+            <Login mode={changeAuthMode} handleLoginSuccess={handleLoginSuccess} />
           ) : (
-            <Register Mode={changeAuthMode} />
+            <Register mode={changeAuthMode} handleLoginSuccess={handleLoginSuccess} />
           )}
         </>
       );

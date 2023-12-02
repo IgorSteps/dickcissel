@@ -1,8 +1,18 @@
 import React, { useState , useEffect} from "react"; 
 import validator from 'validator'
+import { useNavigate } from 'react-router-dom';
 
 
-export default function Register({ Mode }) {
+export default function Register({ mode, handleLoginSuccess}) {
+    let navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleLoginSuccess();
+        navigate("/home");
+    }
+
     // Validation.
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('') 
     const validatePassword = (value) => { 
@@ -38,29 +48,28 @@ export default function Register({ Mode }) {
     }
 
     // Warn users if they try to leave a page with unsaved changes.
-    useEffect(() => {
-        const handleBeforeUnload = (e) => {
-          const confirmationMessage = ''
-          e.returnValue = confirmationMessage;
-          return confirmationMessage;
-        };
+//     useEffect(() => {
+//         const handleBeforeUnload = (e) => {
+//           const confirmationMessage = ''
+//           e.returnValue = confirmationMessage;
+//           return confirmationMessage;
+//         };
 
-        window.addEventListener('beforeunload', handleBeforeUnload);
+//         window.addEventListener('beforeunload', handleBeforeUnload);
 
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+//     return () => {
+//       window.removeEventListener('beforeunload', handleBeforeUnload);
+//     };
+//   }, []);
 
-  // Component.
     return (
         <div className="login-form-container">
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-form-content">
                 <h3 className="login-form-title">Register</h3>
                 <div className="text-center">
                     Already registered?{" "}
-                    <span className="link-primary" onClick={Mode}>
+                    <span className="link-primary" onClick={mode}>
                     Login
                     </span>
                 </div>
@@ -70,7 +79,7 @@ export default function Register({ Mode }) {
                     type="text"
                     autoComplete="name"
                     className="form-control mt-1"
-                    placeholder="Enter Full Name"
+                    placeholder="Enter Full Name eg. John Smith"
                     onChange={(e) => validateNameIsNotNil(e.target.value)}
                     required
                     />
@@ -82,7 +91,7 @@ export default function Register({ Mode }) {
                     type="email"
                     autoComplete="username"
                     className="form-control mt-1"
-                    placeholder="Email Address"
+                    placeholder="Email Address eg. johnsmith@gmail.com"
                     onChange={(e) => validateEmail(e.target.value)}
                     required
                     />
@@ -92,6 +101,7 @@ export default function Register({ Mode }) {
                     <label>Date of Birth</label>
                     <input
                     type="date"
+                    autoComplete="bday"
                     className="form-control mt-1"
                     placeholder="Enter Date of birth"
                     required
