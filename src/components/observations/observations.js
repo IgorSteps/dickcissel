@@ -176,8 +176,9 @@ export default function Observation(props) {
                     <div className="col-md-4">
                         <Form >
                             <Form.Group className="mb-3">
-                                <Form.Label>Bird name</Form.Label>
+                                <Form.Label htmlFor="birdname">Bird name</Form.Label>
                                 <Form.Control 
+                                    name="birdname" id="birdname"
                                     type="text"
                                     placeholder="Enter bird name" 
                                     onChange={(e) => setBirdName(e.target.value)} 
@@ -187,8 +188,9 @@ export default function Observation(props) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Number of Birds</Form.Label>
+                                <Form.Label htmlFor="birdcount">Number of Birds</Form.Label>
                                 <Form.Control
+                                    name="birdcount" id="birdcount"
                                     type="number" 
                                     placeholder="Number of birds"  
                                     onChange={(e) => setBirdCount(e.target.value)}
@@ -197,7 +199,7 @@ export default function Observation(props) {
                                 {countErrMessage && <div className="text-danger">{countErrMessage}</div>}
                             </Form.Group>
 
-                            <Button variant="primary" type="button" onClick={handleSubmit}>
+                            <Button variant="primary" type="submit" onClick={handleSubmit}>
                                 Submit
                             </Button>
                             <ConfirmationModal show={modalShow} handleClose={handleModalClose} />

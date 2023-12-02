@@ -26,8 +26,9 @@ export default function Login({ mode, handleLoginSuccess }) {
             </span>
           </div>
           <div className="form-group mt-3">
-            <label>Email address</label>
+            <label htmlFor="email">Email address</label>
             <input
+              name="email" id="email"
               autoComplete="username"
               type="email"
               className="form-control mt-1"
@@ -35,8 +36,9 @@ export default function Login({ mode, handleLoginSuccess }) {
           </div>
 
           <div className="form-group mt-3">
-            <label>Password</label>
+            <label htmlFor="currentpassword">Password</label>
             <input
+              name="currentpassword" id="currentpassword"
               autoComplete="current-password"
               type="password"
               className="form-control mt-1"

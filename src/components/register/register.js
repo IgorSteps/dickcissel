@@ -48,19 +48,19 @@ export default function Register({ mode, handleLoginSuccess}) {
     }
 
     // Warn users if they try to leave a page with unsaved changes.
-//     useEffect(() => {
-//         const handleBeforeUnload = (e) => {
-//           const confirmationMessage = ''
-//           e.returnValue = confirmationMessage;
-//           return confirmationMessage;
-//         };
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+          const confirmationMessage = ''
+          e.returnValue = confirmationMessage;
+          return confirmationMessage;
+        };
 
-//         window.addEventListener('beforeunload', handleBeforeUnload);
+        window.addEventListener('beforeunload', handleBeforeUnload);
 
-//     return () => {
-//       window.removeEventListener('beforeunload', handleBeforeUnload);
-//     };
-//   }, []);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
     return (
         <div className="login-form-container">
@@ -74,8 +74,9 @@ export default function Register({ mode, handleLoginSuccess}) {
                     </span>
                 </div>
                 <div className="form-group mt-3">
-                    <label>Full Name</label>
+                    <label htmlFor="fullname" >Full Name</label>
                     <input
+                    name="fullname" id="fullname"
                     type="text"
                     autoComplete="name"
                     className="form-control mt-1"
@@ -86,8 +87,9 @@ export default function Register({ mode, handleLoginSuccess}) {
                      {nameErrorMessage && <div className="text-danger">{nameErrorMessage}</div>}
                 </div>
                 <div className="form-group mt-3">
-                    <label>Email address</label>
+                    <label htmlFor="email">Email address</label>
                     <input
+                    name="email" id="email"
                     type="email"
                     autoComplete="username"
                     className="form-control mt-1"
@@ -98,8 +100,9 @@ export default function Register({ mode, handleLoginSuccess}) {
                      {emailErrorMessage && <div className="text-danger">{emailErrorMessage}</div>}
                 </div>
                 <div className="form-group mt-3">
-                    <label>Date of Birth</label>
+                    <label htmlFor="dateofbirth">Date of Birth</label>
                     <input
+                    name="dateofbirth" id="dateofbirth"
                     type="date"
                     autoComplete="bday"
                     className="form-control mt-1"
@@ -108,8 +111,9 @@ export default function Register({ mode, handleLoginSuccess}) {
                     />
                 </div>
                 <div className="form-group mt-3">
-                    <label>Password</label>
+                    <label htmlFor="newpassword">Password</label>
                     <input
+                    name="newpassword" id="newpassword"
                     type="password"
                     autoComplete="new-password"
                     className="form-control mt-1"
@@ -117,9 +121,9 @@ export default function Register({ mode, handleLoginSuccess}) {
                     onChange={(e) => validatePassword(e.target.value)}
                     required
                     />
-                    <small className="form-text text-muted">
+                    <p className="text-muted">
                         Password must be at least 8 characters and include uppercase, lowercase, a number, and a special character.
-                    </small>
+                    </p>
                     {passwordErrorMessage && <div className="text-danger">{passwordErrorMessage}</div>}
                 </div>
                 <div className="d-grid gap-2 mt-3">
