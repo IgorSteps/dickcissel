@@ -1,6 +1,10 @@
 
 .App {
-  background-color: rgb(224, 42, 42);
+  background-color: white;
+}
+
+html {
+  font-size: 18px;
 }
 
 .login-form-container {
@@ -72,9 +76,9 @@ label {
 }
 
 .edit-row {
-  outline: 1px solid black;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  outline: 1px solid black; /* Adjust the color and size as needed */
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 
