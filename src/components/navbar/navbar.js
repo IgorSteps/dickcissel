@@ -19,10 +19,10 @@ function BasicNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Observation</Nav.Link>
-            <Nav.Link href="#link">Education</Nav.Link>
-            <Nav.Link href="#link">Blog</Nav.Link>
+            <Nav.Link href="http://localhost:3000/home">Home</Nav.Link>
+            <Nav.Link href="http://localhost:3000/observations">Observation</Nav.Link>
+            <Nav.Link href="http://localhost:3000/education">Education</Nav.Link>
+            <Nav.Link href="http://localhost:3000/blog">Blog</Nav.Link>
             <NavDropdown title="Help" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.3">How To Use</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">FAQ</NavDropdown.Item>
