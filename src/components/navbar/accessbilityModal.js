@@ -18,13 +18,13 @@ function AccessbilityModal({show, handleClose}) {
             documentElement.
             style.
             setProperty('--dynamic-font-size', `${fontSize}px`);
-      }, [fontSize]);
+    }, [fontSize]);
       
 
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>Accessbility</Modal.Title>
+                <Modal.Title>Accessbility</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
@@ -37,8 +37,8 @@ function AccessbilityModal({show, handleClose}) {
             </Modal.Body>
 
             <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button variant="primary">Save changes</Button>
+                <Button variant="secondary">Close</Button>
+                <Button variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal>
     );

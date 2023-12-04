@@ -17,15 +17,15 @@ function BasicNavbar() {
   const handleShow = () => setShow(true);
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">
           <img
             src="bird-svgrepo-com.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-            alt="BirdWatch Logo"
+            width="40"
+            height="40"
+            className="img-fluid"
+            alt="Bird Watch Logo"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -44,11 +44,9 @@ function BasicNavbar() {
           </Nav>
         </Navbar.Collapse>
 
-        <Button variant="primary" onClick={handleShow}>
-          Accessbility
-        </Button>
+        <Button className='mx-2' variant="primary" onClick={handleShow}>Accessbility</Button>
         <AccessbilityModal show={show} handleClose={handleClose}></AccessbilityModal>
-        {isLoggedIn === false ? (<Button> Login </Button>) : (<Button> Profile </Button>)}
+        {isLoggedIn === false ? (<Button variant='primary'> Login </Button>) : (<Button variant='secondary'> Profile </Button>)}
 
       </Container>
     </Navbar>
