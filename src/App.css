@@ -1,10 +1,13 @@
-
-.App {
-  background-color: white;
+:root {
+  --dynamic-font-size: 18px; /* Default value. */
 }
 
 html {
-  font-size: 18px;
+  font-size: var(--dynamic-font-size);
+}
+
+.App {
+  background-color: white;
 }
 
 .login-form-container {
