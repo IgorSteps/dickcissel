@@ -37,8 +37,8 @@ function AccessbilityModal({show, handleClose}) {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary">Close</Button>
-                <Button variant="primary">Save changes</Button>
+                <Button variant="secondary" onClick={handleClose}>Close</Button>
+                <Button variant="primary" onClick={handleClose}>Save changes</Button>
             </Modal.Footer>
         </Modal>
     );
