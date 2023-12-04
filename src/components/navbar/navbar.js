@@ -3,12 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
+import AccessbilityModal from './accessbilityModal';
 
 function BasicNavbar() {
   const { isLoggedIn } = useContext(AuthContext);
   console.debug("isLoggedIn state is", isLoggedIn)
+
+  // Accessbility Modal state.
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -38,6 +44,10 @@ function BasicNavbar() {
           </Nav>
         </Navbar.Collapse>
 
+        <Button variant="primary" onClick={handleShow}>
+          Accessbility
+        </Button>
+        <AccessbilityModal show={show} handleClose={handleClose}></AccessbilityModal>
         {isLoggedIn === false ? (<Button> Login </Button>) : (<Button> Profile </Button>)}
 
       </Container>

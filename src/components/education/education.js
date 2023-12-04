@@ -3,7 +3,7 @@ import BasicNavbar from "../navbar/navbar"
 import Button from 'react-bootstrap/Button';
 import QuizModal from "./quizModal";
 
-function education() {
+function Education() {
       const [quizModalShow, setQuizModalShow] = useState(false);
       const handleQuizModalClose = () => {
         setQuizModalShow(false);
@@ -73,4 +73,4 @@ function education() {
     );
 }
 
-export default education;
+export default Education;
