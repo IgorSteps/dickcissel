@@ -3,9 +3,14 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\blog",
-    "\\src\\components\\home"
+    "\\src\\components\\auth",
+    "\\src\\components\\context",
+    "\\src\\components\\education",
+    "\\src\\components\\login",
+    "\\src\\components\\navbar",
+    "\\src\\components\\observations",
+    "\\src\\components\\register"
   ],
-  "SelectedNode": "\\src\\components\\home",
+  "SelectedNode": "\\src\\components\\navbar\\navbar.js",
   "PreviewInSolutionExplorer": false
 }

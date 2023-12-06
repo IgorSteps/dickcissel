@@ -3,7 +3,7 @@ import BasicNavbar from "../navbar/navbar"
 import Button from 'react-bootstrap/Button';
 import QuizModal from "./quizModal";
 
-function education() {
+function Education() {
     const [quizModalShow, setQuizModalShow] = useState(false);
     const handleQuizModalClose = () => {
         setQuizModalShow(false);
@@ -18,54 +18,52 @@ function education() {
             <div className="home-page-container">
                 <div className="home-page-content">
                     <h3 className="home-page-title">Education</h3>
-                    <div className="home-page-image">
-                        <img
-                            src="video.jpeg"
-                            width="368"
-                            height="212"
-                            className="d-inline-block align-top"
-                            alt="Play video"
-                        />
+                    <div className="home-page-title">
+                        <iframe width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/LYbXeEIugtk?si=SNQRVbN_-KDqZADQ"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <div className="home-page-about">
-                        Welcome to the eductation section, here you will learn all about different birds through helpful videos and a quiz.
+                        Welcome to the eductation section, here you will learn all about different birds through helpful videos and a quiz. Birds are incredible creatures and come in all different shapes and sizes, some birds even have weird tendancys such as the flamingo can only eat when its head is upside down.
+                        Did you know that birds actually originally decended from reptiles, the earliest known bird was the Archaeopteryx which lived approximately 147 million years ago.
+                        Birds differ in size dramatically, the largest bird currently living is the Ostrich which can reach a height of 2.7 metres with a 2 metre wingspan. Whereas the smallest living bird in the world is the Bee Hummingbird, at only 5.5cm long. 
                     </div>
                     <h3 className="home-page-title">Quick Quiz</h3>
-                    <table>
-                        <tr>
-                            <td>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
                                 <img
                                     src="dickcissel.jpeg"
                                     width="368"
                                     height="212"
                                     className="d-inline-block align-top"
-                                    alt="Play video"
+                                    alt="Bird Img"
                                 />
-                            </td>
-                            <td>
-                                <form>
-                                    <fieldset>
-                                        <legend>Which bird is this?</legend>
-                                        <div>
-                                            <input type="radio" id="bird1" name="bird" value="Blackbird" />
-                                            <label for="bird1">Blackbird</label>
-                                            <br></br>
-                                            <input type="radio" id="bird2" name="bird" value="Dickcissel" />
-                                            <label for="bird2">Dickcissel</label>
-                                            <br></br>
-                                            <input type="radio" id="bird3" name="bird" value="Bluetit" />
-                                            <label for="bird3">Bluetit</label>
-                                        </div>
-                                        <div>
-                                            <Button variant='primary' type='submit' onClick={handleQuizModalShow}>
-                                                Submit
-                                            </Button>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
+                            </div>
+                            <div class="col-sm">
+                                <label class="quiz-container">Blackbird
+                                    <input type="radio" name="radio"/>
+                                    <span class="quiz-radio"></span>
+                                </label>
+                                <label class="quiz-container">Dickcissel
+                                    <input type="radio" name="radio"/>
+                                    <span class="quiz-radio"></span>
+                                </label>
+                                <label class="quiz-container">Bluetit
+                                    <input type="radio" name="radio"/>
+                                    <span class="quiz-radio"></span>
+                                </label>
+                                <Button variant='primary' type='submit' onClick={handleQuizModalShow}>
+                                    Submit
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <QuizModal show={quizModalShow} handleClose={handleQuizModalClose} />
@@ -73,4 +71,4 @@ function education() {
     );
 }
 
-export default education;
+    export default Education;
