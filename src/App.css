@@ -25,7 +25,6 @@ html {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 8px;
-  background-color: white;
 }
 
 .login-form-content,
@@ -45,7 +44,6 @@ html {
 
 label {
   font-weight: 600;
-  color: black
 }
 
 .home-page-container {
@@ -74,7 +72,6 @@ label {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 8px;
-  background-color: white;
 }
 
 .edit-row {
