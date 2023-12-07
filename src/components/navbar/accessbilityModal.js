@@ -21,15 +21,22 @@ function AccessbilityModal({show, handleClose}) {
             setProperty('--dynamic-font-size', `${fontSize}px`);
     }, [fontSize]);
       
-    const [theme, setTheme] = useState('light');
-    const toggleTheme = () => {
-        setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+    const toggleLightTheme = () => {
+        setTheme('light');
+    };
+    const toggleDarkTheme = () => {
+        setTheme('dark');
+    };
+    const toggleHRTheme = () => {
+        setTheme('high-contrast');
     };
 
     useEffect(() => {
         document.
             documentElement.
             setAttribute('data-bs-theme', theme);
+            localStorage.setItem('theme', theme);
     }, [theme]);
 
     return (
@@ -47,8 +54,14 @@ function AccessbilityModal({show, handleClose}) {
                 />
 
                 <p>Choose colour scheme:</p>
-                <Button onClick={toggleTheme}>
-                    {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                <Button className='mx-2' onClick={toggleLightTheme}>
+                    Light
+                </Button>
+                <Button className='mx-2' onClick={toggleDarkTheme}>
+                    Dark
+                </Button>
+                <Button className='mx-2' onClick={toggleHRTheme}>
+                    High Contrast
                 </Button>
             </Modal.Body>
 
