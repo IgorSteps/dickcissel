@@ -25,7 +25,6 @@ html {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 8px;
-  background-color: white;
 }
 
 .login-form-content,
@@ -45,7 +44,6 @@ html {
 
 label {
   font-weight: 600;
-  color: black
 }
 
 .home-page-container {
@@ -74,13 +72,76 @@ label {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 8px;
-  background-color: white;
 }
 
 .edit-row {
-  outline: 1px solid black; /* Adjust the color and size as needed */
+  outline: 1px solid black;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
+html[data-bs-theme='high-contrast'] {
+  --bs-body-bg: #000; 
+  --bs-body-color: #fff; 
+}
 
+html[data-bs-theme='high-contrast'] h3 {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] #birdcount::placeholder {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] #birdname::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #fullname::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #email::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #dateofbirth::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #newpassword::placeholder {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] .text-muted {
+  color: white !important;
+}
+
+html[data-bs-theme='high-contrast'] .btn {
+  color: #000;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+html[data-bs-theme='high-contrast'] .btn:hover {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
+html[data-bs-theme='high-contrast'] a {
+  color: #000080;
+}
+
+html[data-bs-theme='high-contrast'] .navbar {
+  background-color: #98FB98 !important;
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] .login-form {
+  box-shadow: 1px 1px 10px white;
+}
+
+html[data-bs-theme="high-contrast"] .observation-form {
+  box-shadow: 1px 1px 10px white;
+}
+
+html[data-bs-theme="high-contrast"] .card {
+  outline: 1px solid white;
+}
