@@ -46,7 +46,7 @@ function BasicNavbar() {
 
         <Button className='mx-2' variant="primary" onClick={handleShow}>Accessbility</Button>
         <AccessbilityModal show={show} handleClose={handleClose}></AccessbilityModal>
-        {isLoggedIn === false ? (<Button variant='primary'> Login </Button>) : (<Button variant='secondary'> Profile </Button>)}
+        {isLoggedIn === false ? (<Button variant='primary' href='http://localhost:3000/auth'> Login </Button>) : (<Button variant='secondary'> Profile </Button>)}
 
       </Container>
     </Navbar>

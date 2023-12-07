@@ -141,3 +141,7 @@ html[data-bs-theme="high-contrast"] .login-form {
 html[data-bs-theme="high-contrast"] .observation-form {
   box-shadow: 1px 1px 10px white;
 }
+
+html[data-bs-theme="high-contrast"] .card {
+  outline: 1px solid white;
+}
