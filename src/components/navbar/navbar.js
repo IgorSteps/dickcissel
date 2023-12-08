@@ -38,7 +38,7 @@ function BasicNavbar() {
             <Nav.Link href="http://localhost:3000/blog">Blog</Nav.Link>
             <NavDropdown title="Help" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.3">How To Use</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">FAQ</NavDropdown.Item>
+              <NavDropdown.Item href="http://localhost:3000/faq">FAQ</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Contact Us</NavDropdown.Item>
             </NavDropdown>
           </Nav>
