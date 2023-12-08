@@ -9,6 +9,7 @@ import Observations from "./components/observations/observations"
 import BlogPage from './components/blog/blog';
 import AdminPage from './components/admin/admin';
 import FAQ from './components/help/faq';
+import ContactUs from './components/help/contact';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/observations" element={<Observations />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
