@@ -2,8 +2,7 @@ import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import AccessbilityModal from '../navbar/accessbilityModal';
 
 function AdminNavbar() {
@@ -31,6 +30,7 @@ function AdminNavbar() {
 
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
+                <Nav.Link href="http://localhost:3000/admin-home">Home</Nav.Link>
                 <Nav.Link href="http://localhost:3000/admin-observations">Observations</Nav.Link>
                 <Nav.Link href="http://localhost:3000/admin-help">Help</Nav.Link>
             </Nav>
