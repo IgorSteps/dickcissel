@@ -7,6 +7,8 @@ import {AuthProvider} from './components/context/authContext';
 import Home from "./components/home/home"
 import Observations from "./components/observations/observations"
 import BlogPage from './components/blog/blog';
+import AdminPage from './components/admin/admin';
+import AdminObservations from './components/admin/observations';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/observations" element={<Observations />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin-observations" element={<AdminObservations />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
