@@ -1,15 +1,22 @@
-import React from "react"
 import BasicNavbar from "../navbar/navbar"
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
 
 export default function Login({ mode, handleLoginSuccess }) {
   let navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
     e.stopPropagation();
     handleLoginSuccess();
-    navigate("/home");
+    
+    if (email == 'admin@gmail.com' && password == 'admin') {
+      navigate("/admin");
+    } else {
+      navigate("/home");
+    }
   };
 
   return (
@@ -31,6 +38,7 @@ export default function Login({ mode, handleLoginSuccess }) {
               name="email" id="email"
               autoComplete="username"
               type="email"
+              onChange={e => setEmail(e.target.value)}
               className="form-control mt-1"
               placeholder="Enter email" />
           </div>
@@ -40,6 +48,7 @@ export default function Login({ mode, handleLoginSuccess }) {
             <input
               name="currentpassword" id="currentpassword"
               autoComplete="current-password"
+              onChange={e => setPassword(e.target.value)}
               type="password"
               className="form-control mt-1"
               placeholder="Enter password" />
