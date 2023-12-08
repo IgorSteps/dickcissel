@@ -10,6 +10,7 @@ import BlogPage from './components/blog/blog';
 import AdminPage from './components/admin/admin';
 import FAQ from './components/help/faq';
 import ContactUs from './components/help/contact';
+import HowToUse from './components/help/howtouse';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/how-to-use" element={<HowToUse />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
