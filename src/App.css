@@ -145,3 +145,19 @@ html[data-bs-theme="high-contrast"] .observation-form {
 html[data-bs-theme="high-contrast"] .card {
   outline: 1px solid white;
 }
+
+html[data-bs-theme="high-contrast"] th {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] td {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-counties {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-birds {
+  color: #fff;
+}

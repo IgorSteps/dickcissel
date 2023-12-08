@@ -10,7 +10,7 @@ function AdminObservations() {
             <AdminNavbar />
             <Container className='p-4 observation-form'>
                 <Tabs defaultActiveKey="counties" id="data-tables-tabs">
-                    <Tab eventKey="counties" title="Counties">
+                    <Tab className='accessible' eventKey="counties" title="Counties">
                         <CountyCountTable />
                     </Tab>
                     <Tab eventKey="birds" title="Birds">
