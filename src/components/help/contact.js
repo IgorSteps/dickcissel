@@ -59,20 +59,21 @@ function ContactUs() {
 
         <h3 className="login-form-title">Contact Us</h3>
         <Form.Group className="mb-3 login-form-content" controlId="formBasicEmail">
-            <Form.Label htmlFor="fullName">Full Name</Form.Label>
+            <Form.Label htmlFor="fullname">Full Name</Form.Label>
             <Form.Control 
-            id="fullName"
+            id="fullname"
             type="text"
             placeholder="Enter your full name, eg. John Smith"
             onChange={e => validateName(e.target.value)}
             required/>
-            {nameErrorMessage && <Form.Text className='text-danger' aria-describedby="fullName">{nameErrorMessage}</Form.Text>}
+            {nameErrorMessage && <Form.Text className='text-danger' aria-describedby="fullname">{nameErrorMessage}</Form.Text>}
         </Form.Group>
 
         <Form.Group className="mb-3 login-form-content" controlId="formBasicEmail">
             <Form.Label htmlFor="subject">Subject</Form.Label>
             <Form.Control
             type="text" 
+            id='subject'
             placeholder="Enter subject, eg. bird counting isn't working" 
             onChange={e => validateSubject(e.target.value)}
             required/>
@@ -83,6 +84,7 @@ function ContactUs() {
             <Form.Label htmlFor="email">Email address</Form.Label>
             <Form.Control 
             type="email" 
+            id='email'
             onChange={(e) => validateEmail(e.target.value)}
             placeholder="Enter your email address, eg. johnsmith@gmail.com" 
             required/>
@@ -92,6 +94,7 @@ function ContactUs() {
         <Form.Label htmlFor="message" className='login-form-content'>Message</Form.Label>
         <InputGroup className='mb-3 login-form-content'>
             <Form.Control 
+            id='message'
             as="textarea" 
             aria-label="textarea"
             placeholder='Enter your message here.' 

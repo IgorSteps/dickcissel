@@ -99,10 +99,16 @@ html[data-bs-theme='high-contrast'] #birdname::placeholder {
 html[data-bs-theme='high-contrast'] #fullname::placeholder {
   color: white;
 }
+html[data-bs-theme='high-contrast'] #subject::placeholder {
+  color: white;
+}
 html[data-bs-theme='high-contrast'] #email::placeholder {
   color: white;
 }
 html[data-bs-theme='high-contrast'] #dateofbirth::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #message::placeholder {
   color: white;
 }
 html[data-bs-theme='high-contrast'] #newpassword::placeholder {
@@ -129,7 +135,16 @@ html[data-bs-theme='high-contrast'] a {
   color: #000080;
 }
 
+html[data-bs-theme='high-contrast'] a:hover {
+  color: #01018f;
+}
+
 html[data-bs-theme='high-contrast'] .navbar {
+  background-color: #98FB98 !important;
+  color: #fff;
+}
+
+html[data-bs-theme='high-contrast'] .dropdown-menu {
   background-color: #98FB98 !important;
   color: #fff;
 }
@@ -160,4 +175,8 @@ html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-counties {
 
 html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-birds {
   color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] .accordion-button.collapse::after {
+  color: white;
 }
