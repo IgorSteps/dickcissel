@@ -11,6 +11,7 @@ import AdminPage from './components/admin/admin';
 import FAQ from './components/help/faq';
 import ContactUs from './components/help/contact';
 import HowToUse from './components/help/howtouse';
+import SearchPage from './components/search/birdSearch';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/how-to-use" element={<HowToUse />} />
+          <Route path="/find" element={<SearchPage />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
