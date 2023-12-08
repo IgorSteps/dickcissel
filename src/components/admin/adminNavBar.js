@@ -28,14 +28,6 @@ function AdminNavbar() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
-                <Nav.Link href="http://localhost:3000/admin-home">Home</Nav.Link>
-                <Nav.Link href="http://localhost:3000/admin-observations">Observations</Nav.Link>
-                <Nav.Link href="http://localhost:3000/admin-help">Help</Nav.Link>
-            </Nav>
-            </Navbar.Collapse>
-
             <Button className='mx-2' variant="primary" onClick={handleShow}>Accessbility</Button>
             <AccessbilityModal show={show} handleClose={handleClose}></AccessbilityModal>
 
