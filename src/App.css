@@ -10,16 +10,13 @@ html {
   background-color: white;
 }
 
-.login-form-container,
-.contact-info-container {
+.login-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
-
-
 
 .login-form,
 .observation-form {
@@ -182,4 +179,8 @@ html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-birds {
 
 html[data-bs-theme="high-contrast"] .accordion-button.collapse::after {
   color: white;
+}
+
+html[data-bs-theme="high-contrast"] #address, #phone, #email {
+  color: #00DDFF;
 }

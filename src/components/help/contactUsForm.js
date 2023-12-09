@@ -79,7 +79,7 @@ function ContactUsForm({handleSubmit}) {
                 required/>
             </InputGroup>
 
-            <div className='login-form-content d-grid gap-2 mt-4'>
+            <div className='d-grid gap-2 mt-4'>
                 <Button variant="primary" type="submit">
                     Send
                 </Button>
