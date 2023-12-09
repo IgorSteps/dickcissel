@@ -85,6 +85,10 @@ html[data-bs-theme='high-contrast'] {
   --bs-body-color: #fff; 
 }
 
+html[data-bs-theme='dark'] h3 {
+  color: white;
+}
+
 html[data-bs-theme='high-contrast'] h3 {
   color: white;
 }
@@ -102,7 +106,7 @@ html[data-bs-theme='high-contrast'] #fullname::placeholder {
 html[data-bs-theme='high-contrast'] #subject::placeholder {
   color: white;
 }
-html[data-bs-theme='high-contrast'] #email::placeholder {
+html[data-bs-theme='high-contrast'] #email::placeholder, #currentpassword::placeholder {
   color: white;
 }
 html[data-bs-theme='high-contrast'] #dateofbirth::placeholder {
@@ -179,4 +183,8 @@ html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-birds {
 
 html[data-bs-theme="high-contrast"] .accordion-button.collapse::after {
   color: white;
+}
+
+html[data-bs-theme="high-contrast"] #address, #phone, #email {
+  color: #00DDFF;
 }
