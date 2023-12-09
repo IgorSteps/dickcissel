@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import React, { useState , useEffect} from "react"; 
 import validator from 'validator'
+import HelpConfirmationModal from './confirmationModal';
 
 function ContactUs() {
     // Warn users if they try to leave a page with unsubmitted changes.
@@ -50,15 +51,25 @@ function ContactUs() {
         }
     }
 
+    const [confrimationModalShow, setConfirmationModalShow] = useState(false);
+    const handleClose = () => {
+        setConfirmationModalShow(false);
+    }
+    const handleShow = (e) => {
+        e.preventDefault()
+        e.stopPropagation();
+        setConfirmationModalShow(true)
+    }
+
 
   return (
     <>
     <BasicNavbar />
     <Container className='login-form-container'>
-    <Form className='login-form'>
+    <Form className='login-form' onSubmit={handleShow}>
 
         <h3 className="login-form-title">Contact Us</h3>
-        <Form.Group className="mb-3 login-form-content" controlId="formBasicEmail">
+        <Form.Group className="mb-3 login-form-content" >
             <Form.Label htmlFor="fullname">Full Name</Form.Label>
             <Form.Control 
             id="fullname"
@@ -69,7 +80,7 @@ function ContactUs() {
             {nameErrorMessage && <Form.Text className='text-danger' aria-describedby="fullname">{nameErrorMessage}</Form.Text>}
         </Form.Group>
 
-        <Form.Group className="mb-3 login-form-content" controlId="formBasicEmail">
+        <Form.Group className="mb-3 login-form-content" >
             <Form.Label htmlFor="subject">Subject</Form.Label>
             <Form.Control
             type="text" 
@@ -80,7 +91,7 @@ function ContactUs() {
             {subjectErrorMessage && <Form.Text className='text-danger' aria-describedby="subject">{subjectErrorMessage}</Form.Text>}
         </Form.Group>
 
-        <Form.Group className="mb-3 login-form-content" controlId="formBasicEmail">
+        <Form.Group className="mb-3 login-form-content" >
             <Form.Label htmlFor="email">Email address</Form.Label>
             <Form.Control 
             type="email" 
@@ -106,6 +117,7 @@ function ContactUs() {
                 Send
             </Button>
         </div>
+        <HelpConfirmationModal show={confrimationModalShow} handleClose={handleClose}/>
 
     </Form>
     </Container>
