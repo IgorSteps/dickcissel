@@ -63,10 +63,10 @@ function SearchPage() {
                     value={searchQuery}
                     onChange={handleSearchChange}
                     />
-                    <Button variant="outline-secondary" id="button-search" onClick={onSearch}>
+                    <Button variant="outline-secondary" id="button-search"  aria-label="Search for a bird" onClick={onSearch}>
                         Search
                     </Button>
-                    <Button variant="outline-info" id="button-reset" onClick={resetSearch}>
+                    <Button variant="outline-info" id="button-reset"  aria-label="Reset search" onClick={resetSearch}>
                         Reset
                     </Button>
                 </InputGroup>
@@ -80,7 +80,7 @@ function SearchPage() {
                         ))}
                     </DropdownButton>
 
-                    <Button variant="outline-info" onClick={resetFilters}>
+                    <Button variant="outline-info" aria-label="Reset filters" onClick={resetFilters}>
                         Reset Filters
                     </Button>
                 </ButtonGroup>
