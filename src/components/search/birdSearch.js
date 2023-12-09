@@ -13,44 +13,54 @@ function SearchPage() {
         {id:4, name: 'Sparkle Beak', colour: 'Shimmering Silver with Rainbow Highlights', sound: 'Chirps that sound like tiny bells'},
         {id:5, name: 'Professor Hootenstein', colour: 'Deep Purple with White Polka Dots', sound: 'A deep, wise-sounding hoot followed by a giggle'},
         {id:6, name: 'Zippy Zoomwing', colour: 'Bright Orange with Electric Blue Wings', sound: 'Makes a zooming noise as it flies by'},
-        { id: 7, name: "Glitter Gobble", colour: "Glittery Gold with Hints of Emerald Green", sound: "A gobbling noise that echoes like a tiny trumpet" },
-        { id: 8, name: "Cha-Cha Chirper", colour: "Hot Pink with Lemon Yellow Stripes", sound: "A rhythmic cha-cha music" },
-        { id: 9, name: "Mr. Peepers McSqueak", colour: "Soft Lavender with Jet Black Accents", sound: "A series of high-pitched peeps and squeaks" },
-        { id: 10, name: "Echo Echofeather", colour: "Reflective Mirror-like Feathers", sound: "Mimics any sound it hears, creating an echo effect" }
-    
+        {id:7, name: "Glitter Gobble", colour: "Glittery Gold with Hints of Emerald Green", sound: "A gobbling noise that echoes like a tiny trumpet" },
+        {id:8, name: "Cha-Cha Chirper", colour: "Hot Pink with Lemon Yellow Stripes", sound: "A rhythmic cha-cha music" },
+        {id:9, name: "Mr. Peepers McSqueak", colour: "Soft Lavender with Jet Black Accents", sound: "A series of high-pitched peeps and squeaks" },
+        {id:10, name:"Echo Echofeather", colour: "Reflective Mirror-like Feathers", sound: "Mimics any sound it hears, creating an echo effect" }
     ]
+
     const [searchQuery, setSearchQuery] = useState('');
-    const [sortOption, setSortOption] = useState('Name');
-
-    const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
     };
 
-    const handleSortChange = (eventKey) => {
-        setSortOption(eventKey);
-    };
+    const [foundBird, setFoundBird] = useState('');
+    const onSearch = () => {
+        const bird = birds.find(bird => bird.name === searchQuery);
+       setFoundBird(bird);
+        console.debug("Found bird: ", bird);
+    }
+
+    const resetSearch = () => {
+        setFoundBird('');
+        setSearchQuery('');
+    }
+    
 
     return (
         <>
             <BasicNavbar />
             <Container className='observation-form'>
+                <h3 className="login-form-title">Find a Bird</h3>
                 <InputGroup className="mb-3">
                     <FormControl
-                    placeholder="Search..."
+                    placeholder="Search a bird.."
                     aria-label="Search"
-                    aria-describedby="basic-addon2"
+                    aria-describedby="button"
                     value={searchQuery}
                     onChange={handleSearchChange}
                     />
-                    <Button variant="outline-secondary" id="button-addon2">
+                    <Button variant="outline-secondary" id="button" onClick={onSearch}>
                         Search
+                    </Button>
+                    <Button variant="outline-info" id="button-reset" onClick={resetSearch}>
+                        Reset
                     </Button>
                 </InputGroup>
 
                 <DropdownButton
                     title="Sort By"
                     id="dropdown-menu-align-right"
-                    onSelect={handleSortChange}
                 >
                     <Dropdown.Item eventKey="Name">Name</Dropdown.Item>
                     <Dropdown.Item eventKey="Date">Date</Dropdown.Item>
@@ -58,11 +68,17 @@ function SearchPage() {
 
                 <h3 className="login-form-title">Results:</h3>
                 <Row className='d-flex justify-content-center'>
-                    {birds.map(bird => (
+                    {foundBird ? (
                         <Col className='d-flex justify-content-center'>
-                            <BirdCard key={bird.id} name={bird.name} colour={bird.colour} sound={bird.sound} />
+                            <BirdCard key={foundBird.id} name={foundBird.name} colour={foundBird.colour} sound={foundBird.sound} />
                         </Col>
-                    ))}
+                    ) : (
+                        birds.map(bird => (
+                            <Col className='d-flex justify-content-center'>
+                                <BirdCard name={bird.name} colour={bird.colour} sound={bird.sound} />
+                            </Col>
+                        ))
+                    )}
                 </Row>
             </Container>
         </>
