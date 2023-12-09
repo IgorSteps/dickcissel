@@ -1,8 +1,9 @@
 import BasicNavbar from "../navbar/navbar"
-import { Container } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import React, { useState , useEffect} from "react"; 
 import HelpConfirmationModal from './confirmationModal';
 import ContactUsForm from "./contactUsForm";
+import ContactUsDetails from "./contactUsDetails";
 
 function ContactUs() {
     // Warn users if they try to leave a page with unsubmitted changes.
@@ -34,8 +35,15 @@ function ContactUs() {
   return (
     <>
     <BasicNavbar />
-    <Container className='login-form-container'>
-        <ContactUsForm handleSubmit={handleSubmit} />
+    <Container className='observation-form'>
+        <Row className="login-form-content">
+            <Col>
+                <ContactUsForm handleSubmit={handleSubmit} />
+            </Col>
+            <Col>
+                <ContactUsDetails />
+            </Col>
+        </Row>
         <HelpConfirmationModal show={confrimationModalShow} handleClose={handleClose}/>
     </Container>
     </>

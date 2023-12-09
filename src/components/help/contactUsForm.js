@@ -33,10 +33,10 @@ function ContactUsForm({handleSubmit}) {
        }
    }
     return (
-            <Form className='login-form' onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
 
-            <h3 className="login-form-title">Contact Us</h3>
-            <Form.Group className="mb-3 login-form-content" >
+            <h3 className="login-form-title">Send Us a Message</h3>
+            <Form.Group className="mb-3" >
                 <Form.Label htmlFor="fullname">Full Name</Form.Label>
                 <Form.Control 
                 id="fullname"
@@ -47,7 +47,7 @@ function ContactUsForm({handleSubmit}) {
                 {nameErrorMessage && <Form.Text className='text-danger' aria-describedby="fullname">{nameErrorMessage}</Form.Text>}
             </Form.Group>
 
-            <Form.Group className="mb-3 login-form-content" >
+            <Form.Group className="mb-3 " >
                 <Form.Label htmlFor="subject">Subject</Form.Label>
                 <Form.Control
                 type="text" 
@@ -58,7 +58,7 @@ function ContactUsForm({handleSubmit}) {
                 {subjectErrorMessage && <Form.Text className='text-danger' aria-describedby="subject">{subjectErrorMessage}</Form.Text>}
             </Form.Group>
 
-            <Form.Group className="mb-3 login-form-content" >
+            <Form.Group className="mb-3" >
                 <Form.Label htmlFor="email">Email address</Form.Label>
                 <Form.Control 
                 type="email" 
@@ -69,8 +69,8 @@ function ContactUsForm({handleSubmit}) {
                 {emailErrorMessage && <Form.Text className="text-danger">{emailErrorMessage}</Form.Text>}
             </Form.Group>
 
-            <Form.Label htmlFor="message" className='login-form-content'>Message</Form.Label>
-            <InputGroup className='mb-3 login-form-content'>
+            <Form.Label htmlFor="message" >Message</Form.Label>
+            <InputGroup className='mb-3 '>
                 <Form.Control 
                 id='message'
                 as="textarea" 

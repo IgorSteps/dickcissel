@@ -10,13 +10,16 @@ html {
   background-color: white;
 }
 
-.login-form-container {
+.login-form-container,
+.contact-info-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
+
+
 
 .login-form,
 .observation-form {
