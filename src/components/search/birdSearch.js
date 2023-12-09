@@ -38,7 +38,6 @@ function SearchPage() {
     }
     
     const [colourFilter, setColourFilter] = useState('');
-    const [soundFilter, setSoundFilter] = useState('');
     const applyFilters = () => {
         return birds.filter(bird => {
             return colourFilter ? bird.colour.includes(colourFilter) : true;
@@ -59,12 +58,12 @@ function SearchPage() {
                 <InputGroup className="mb-3">
                     <FormControl
                     placeholder="Search a bird.."
-                    aria-label="Search"
-                    aria-describedby="button"
+                    aaria-label="Search for a bird by name"
+                    aria-describedby="button-search"
                     value={searchQuery}
                     onChange={handleSearchChange}
                     />
-                    <Button variant="outline-secondary" id="button" onClick={onSearch}>
+                    <Button variant="outline-secondary" id="button-search" onClick={onSearch}>
                         Search
                     </Button>
                     <Button variant="outline-info" id="button-reset" onClick={resetSearch}>
@@ -73,7 +72,7 @@ function SearchPage() {
                 </InputGroup>
 
                 <ButtonGroup>
-                    <DropdownButton title="Filter by Color" id="dropdown-menu-align-right">
+                    <DropdownButton title="Filter by Color" aria-haspopup="true" aria-expanded="false">
                         {birds.map(bird => (
                             <Dropdown.Item key={bird.colour} onClick={() => setColourFilter(bird.colour)}>
                                 {bird.colour}
@@ -87,7 +86,7 @@ function SearchPage() {
                 </ButtonGroup>
 
                 <h3 className="login-form-title">Results:</h3>
-                <Row className='d-flex justify-content-center'>
+                <Row className='d-flex justify-content-center' aria-live="polite">
                     {foundBird ? (
                         <Col className='d-flex justify-content-center'>
                             <BirdCard key={foundBird.id} name={foundBird.name} colour={foundBird.colour} sound={foundBird.sound} />
