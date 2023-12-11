@@ -51,10 +51,11 @@ label {
 }
 
 .home-page-container {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 8px;
 }
 
 .home-page-image {
