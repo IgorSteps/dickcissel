@@ -7,12 +7,12 @@ export default function Home(props) {
             <div className="home-page-content">
                 <h3 className="home-page-title">Bird Of The Week</h3>
                 <h3 className="home-page-title">Dickcissel [duhk·si·sl]</h3>
-                <div className="home-page-image">
+                    <div className="col-md-4 mx-auto">
                     <img
                         src="dickcissel.jpeg"
                         width="500"
                         height="361"
-                        className="d-inline-block align-top"
+                        className="img-fluid"
                         alt="Dickcissel"
                     />
                 </div>
