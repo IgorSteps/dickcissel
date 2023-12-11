@@ -1,10 +1,17 @@
+:root {
+  --dynamic-font-size: 18px; /* Default value. */
+}
+
+html {
+  font-size: var(--dynamic-font-size);
+}
 
 .App {
   background-color: white;
 }
 
-html {
-  font-size: 18px;
+.form-text {
+  font-size: 1em !important;
 }
 
 .login-form-container {
@@ -22,7 +29,6 @@ html {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 8px;
-  background-color: white;
 }
 
 .login-form-content,
@@ -42,7 +48,6 @@ html {
 
 label {
   font-weight: 600;
-  color: black
 }
 
 .home-page-container {
@@ -71,15 +76,135 @@ label {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 8px;
-  background-color: white;
 }
 
 .edit-row {
-  outline: 1px solid black; /* Adjust the color and size as needed */
+  outline: 1px solid black;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
+html[data-bs-theme='high-contrast'] {
+  --bs-body-bg: #000; 
+  --bs-body-color: #fff; 
+}
+
+html[data-bs-theme='dark'] h3 {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] h3 {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] #birdcount::placeholder {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] #birdname::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #fullname::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #subject::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #email::placeholder, #currentpassword::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #dateofbirth::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #message::placeholder {
+  color: white;
+}
+html[data-bs-theme='high-contrast'] #newpassword::placeholder {
+  color: white;
+}
+
+html[data-bs-theme='high-contrast'] .text-muted {
+  color: white !important;
+}
+
+html[data-bs-theme='high-contrast'] .btn {
+  color: #000;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+html[data-bs-theme='high-contrast'] .btn:hover {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
+html[data-bs-theme='high-contrast'] a {
+  color: #000080;
+}
+
+html[data-bs-theme='high-contrast'] a:hover {
+  color: #01018f;
+}
+
+html[data-bs-theme='high-contrast'] .navbar {
+  background-color: #98FB98 !important;
+  color: #fff;
+}
+
+html[data-bs-theme='high-contrast'] .dropdown-menu {
+  background-color: #98FB98 !important;
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] .login-form {
+  box-shadow: 1px 1px 10px white;
+}
+
+html[data-bs-theme="high-contrast"] .observation-form {
+  box-shadow: 1px 1px 10px white;
+}
+
+html[data-bs-theme="high-contrast"] .card {
+  outline: 1px solid white;
+}
+
+html[data-bs-theme="high-contrast"] th {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] td {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-counties {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] #data-tables-tabs-tab-birds {
+  color: #fff;
+}
+
+html[data-bs-theme="high-contrast"] .accordion-button.collapse::after {
+  color: white;
+}
+
+html[data-bs-theme="high-contrast"] #address{
+  color: #00DDFF;
+}
+
+
+html[data-bs-theme="high-contrast"] #phone{
+  color: #00DDFF;
+}
+
+html[data-bs-theme="high-contrast"] #email{
+  color: #00DDFF;
+}
+
+html[data-bs-theme="high-contrast"] #findabirdlink {
+  color: #00DDFF;
+}
 
 .quiz-container {
     display: block;
