@@ -184,7 +184,7 @@ export default function Observation(props) {
                                     onChange={(e) => setBirdName(e.target.value)} 
                                     value={birdName}
                                 />
-                                <Form.Text as={'p'}>
+                                <Form.Text>
                                     <a 
                                     id="findabirdlink"
                                     href="http://localhost:3000/find-a-bird"
