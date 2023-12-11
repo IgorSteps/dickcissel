@@ -25,7 +25,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/how-to-use" element={<HowToUse />} />
-          <Route path="/find" element={<SearchPage />} />
+          <Route path="/find-a-bird" element={<SearchPage />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>

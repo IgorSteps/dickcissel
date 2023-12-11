@@ -10,6 +10,10 @@ html {
   background-color: white;
 }
 
+.form-text {
+  font-size: 1em !important;
+}
+
 .login-form-container {
   display: flex;
   justify-content: center;
@@ -185,6 +189,20 @@ html[data-bs-theme="high-contrast"] .accordion-button.collapse::after {
   color: white;
 }
 
-html[data-bs-theme="high-contrast"] #address, #phone, #email {
+html[data-bs-theme="high-contrast"] #address{
   color: #00DDFF;
 }
+
+
+html[data-bs-theme="high-contrast"] #phone{
+  color: #00DDFF;
+}
+
+html[data-bs-theme="high-contrast"] #email{
+  color: #00DDFF;
+}
+
+html[data-bs-theme="high-contrast"] #findabirdlink {
+  color: #00DDFF;
+}
+

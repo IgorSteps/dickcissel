@@ -184,6 +184,14 @@ export default function Observation(props) {
                                     onChange={(e) => setBirdName(e.target.value)} 
                                     value={birdName}
                                 />
+                                <Form.Text>
+                                    <a 
+                                    id="findabirdlink"
+                                    href="http://localhost:3000/find-a-bird"
+                                    target="_blank"
+                                    title="Go to Find a Bird page"
+                                    > Can't identify a bird? Try our advanced Find A Bird search.</a>
+                                </Form.Text>
                                 {nameErrorMessage && <div className="text-danger">{nameErrorMessage}</div>}
                             </Form.Group>
 
