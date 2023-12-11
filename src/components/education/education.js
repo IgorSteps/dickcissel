@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css"
 import React, { useState } from "react";
 import BasicNavbar from "../navbar/navbar"
 import Button from 'react-bootstrap/Button';
@@ -15,12 +16,11 @@ function Education() {
 
     return (
         <><BasicNavbar />
-            <div className="home-page-container">
+            <div className="observation-form container">
                 <div className="home-page-content">
                     <h3 className="home-page-title">Education</h3>
-                    <div className="home-page-title">
-                        <iframe width="560"
-                            height="315"
+                    <div className="col-md-4 mx-auto">
+                        <iframe 
                             src="https://www.youtube.com/embed/LYbXeEIugtk?si=SNQRVbN_-KDqZADQ"
                             title="YouTube video player"
                             frameborder="0"
@@ -34,18 +34,18 @@ function Education() {
                         Birds differ in size dramatically, the largest bird currently living is the Ostrich which can reach a height of 2.7 metres with a 2 metre wingspan. Whereas the smallest living bird in the world is the Bee Hummingbird, at only 5.5cm long. 
                     </div>
                     <h3 className="home-page-title">Quick Quiz</h3>
-                    <div class="container">
+                    <div class="observation-form container">
                         <div class="row">
-                            <div class="col-sm">
+                            <div class="col-md-4">
                                 <img
                                     src="dickcissel.jpeg"
-                                    width="368"
-                                    height="212"
-                                    className="d-inline-block align-top"
+                                    width="500"
+                                    height="361"
+                                    className="img-fluid"
                                     alt="Bird Img"
                                 />
                             </div>
-                            <div class="col-sm">
+                            <div class="col-md-4">
                                 <label class="quiz-container">Blackbird
                                     <input type="radio" name="radio"/>
                                     <span class="quiz-radio"></span>
