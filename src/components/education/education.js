@@ -6,11 +6,15 @@ import QuizModal from "./quizModal";
 
 function Education() {
     const [quizModalShow, setQuizModalShow] = useState(false);
-    const handleQuizModalClose = () => {
+    const handleQuizModalClose = async (event) => {
+        event.preventDefault()
+        event.stopPropagation();
         setQuizModalShow(false);
     }
 
-    const handleQuizModalShow = () => {
+    const handleQuizModalShow = async (event) => {
+        event.preventDefault()
+        event.stopPropagation();
         setQuizModalShow(true);
     }
 
