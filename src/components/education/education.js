@@ -23,9 +23,9 @@ function Education() {
                         <iframe 
                             src="https://www.youtube.com/embed/LYbXeEIugtk?si=SNQRVbN_-KDqZADQ"
                             title="YouTube video player"
-                            frameborder="0"
+                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
+                            allowFullScreen>
                         </iframe>
                     </div>
                     <div className="home-page-about">
@@ -42,7 +42,7 @@ function Education() {
                                     width="500"
                                     height="361"
                                     className="img-fluid"
-                                    alt="Bird Img"
+                                    alt="Dickcissel"
                                 />
                             </div>
                             <div class="col-md-4">
