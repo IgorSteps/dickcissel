@@ -1,4 +1,4 @@
-# dickcissel
+# dickcissel - Group H14
 A React web app for bird counting
 
 [Trello Board](https://trello.com/invite/b/sg2Dz3EH/ATTI19ce585a46706602e1f6c6c315843550AC6E1785/hci)
