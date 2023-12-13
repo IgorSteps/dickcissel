@@ -9,7 +9,7 @@ function ContactUs() {
     // Warn users if they try to leave a page with unsubmitted changes.
     useEffect(() => {
         const handleBeforeUnload = (e) => {
-            const msg = ''
+            const msg = 'You have unsaved changes!'
             e.returnValue = msg;
             return msg;
         };
