@@ -1,8 +1,23 @@
 import BasicNavbar from "../navbar/navbar"
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Login({ mode, handleLoginSuccess }) {
+   // Warn users if they try to leave a page with unsaved changes.
+   useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      const msg = 'You have unsaved changes!'
+      e.returnValue = msg;
+      return msg;
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+return () => {
+  window.removeEventListener('beforeunload', handleBeforeUnload);
+};
+}, []);
+
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
